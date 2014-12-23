@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NovaBurst.ModularTypeScript.UI.Person", "NovaBurst.ModularTypeScript.UI.Person\NovaBurst.ModularTypeScript.UI.Person.csproj", "{C24A4FE2-DF72-4DCB-9DA5-CCFAAE80B81E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NovaBurst.ModularTypeScript.UI.Sales", "NovaBurst.ModularTypeScript.UI.Sales\NovaBurst.ModularTypeScript.UI.Sales.csproj", "{958C8A72-2046-48A1-819E-B3746C0AE615}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NovaBurst.ModularTypeScript.Host", "NovaBurst.ModularTypeScript.Host\NovaBurst.ModularTypeScript.Host.csproj", "{CEF5F1D9-9674-48E2-82FD-32288314AC19}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01. UI", "01. UI", "{EFB64586-8738-4A60-9425-32BD9B5C242C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02. Hosts", "02. Hosts", "{37B351E1-B78E-4D96-868E-DD3090AFDA38}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NovaBurst.ModularTypeScript.UI.Core", "NovaBurst.ModularTypeScript.UI.Core\NovaBurst.ModularTypeScript.UI.Core.csproj", "{B13283DB-75D4-4A95-9CAA-DF2D94E547F8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C24A4FE2-DF72-4DCB-9DA5-CCFAAE80B81E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C24A4FE2-DF72-4DCB-9DA5-CCFAAE80B81E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C24A4FE2-DF72-4DCB-9DA5-CCFAAE80B81E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C24A4FE2-DF72-4DCB-9DA5-CCFAAE80B81E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{958C8A72-2046-48A1-819E-B3746C0AE615}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{958C8A72-2046-48A1-819E-B3746C0AE615}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{958C8A72-2046-48A1-819E-B3746C0AE615}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{958C8A72-2046-48A1-819E-B3746C0AE615}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEF5F1D9-9674-48E2-82FD-32288314AC19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEF5F1D9-9674-48E2-82FD-32288314AC19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEF5F1D9-9674-48E2-82FD-32288314AC19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEF5F1D9-9674-48E2-82FD-32288314AC19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B13283DB-75D4-4A95-9CAA-DF2D94E547F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B13283DB-75D4-4A95-9CAA-DF2D94E547F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B13283DB-75D4-4A95-9CAA-DF2D94E547F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B13283DB-75D4-4A95-9CAA-DF2D94E547F8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C24A4FE2-DF72-4DCB-9DA5-CCFAAE80B81E} = {EFB64586-8738-4A60-9425-32BD9B5C242C}
+		{958C8A72-2046-48A1-819E-B3746C0AE615} = {EFB64586-8738-4A60-9425-32BD9B5C242C}
+		{CEF5F1D9-9674-48E2-82FD-32288314AC19} = {37B351E1-B78E-4D96-868E-DD3090AFDA38}
+		{B13283DB-75D4-4A95-9CAA-DF2D94E547F8} = {EFB64586-8738-4A60-9425-32BD9B5C242C}
+	EndGlobalSection
+EndGlobal
