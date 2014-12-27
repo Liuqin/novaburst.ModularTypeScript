@@ -59,9 +59,20 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="scripts\angular.min.js.map" />
     <Content Include="packages.config" />
-    <Content Include="modules\Core\bundle.json" />
+    <Content Include="modules\Core\module.json" />
+    <Content Include="modules\Core\_module.bat" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -74,8 +85,11 @@
     <Content Include="scripts\angular.js" />
     <Content Include="scripts\angular.min.js" />
     <None Include="scripts\jquery-2.1.1.intellisense.js" />
+    <Content Include="scripts\bootstrap.js" />
+    <Content Include="scripts\bootstrap.min.js" />
     <Content Include="scripts\jquery-2.1.1.js" />
     <Content Include="scripts\jquery-2.1.1.min.js" />
+    <Content Include="scripts\npm.js" />
     <Content Include="scripts\r.js" />
     <Content Include="scripts\require.js" />
     <Content Include="Web.config" />
@@ -87,8 +101,8 @@
   <ItemGroup>
     <TypeScriptCompile Include="modules\Core\models\Address.ts" />
     <TypeScriptCompile Include="modules\Core\models\Phone.ts" />
-    <TypeScriptCompile Include="modules\Core\init.ts" />
-    <TypeScriptCompile Include="modules\Core\utility\Module.ts" />
+    <TypeScriptCompile Include="modules\Core\ref.ts" />
+    <TypeScriptCompile Include="modules\Core\moduleLoader.ts" />
     <TypeScriptCompile Include="scripts\typings\angularjs\angular-animate.d.ts" />
     <TypeScriptCompile Include="scripts\typings\angularjs\angular-cookies.d.ts" />
     <TypeScriptCompile Include="scripts\typings\angularjs\angular-mocks.d.ts" />
@@ -99,7 +113,12 @@
     <TypeScriptCompile Include="scripts\typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="scripts\typings\requirejs\require.d.ts" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="modules\Core\controllers\" />
+    <Folder Include="modules\Core\directives\" />
+    <Folder Include="modules\Core\filters\" />
+    <Folder Include="modules\Core\services\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

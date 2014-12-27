@@ -1,4 +1,19 @@
-﻿
+REM set currentDir=%cd%
+
+REM cd "..\..\..\NovaBurst.ModularTypeScript.Core.UI\modules\Core"
+REM call "_module.bat"
+
+REM cd "..\..\..\NovaBurst.ModularTypeScript.Person.UI\modules\Person"
+REM call "_module.bat"
+
+REM cd "..\..\..\NovaBurst.ModularTypeScript.Sales.UI\modules\Sales"
+REM call "_module.bat"
+
+REM cd "..\..\..\NovaBurst.ModularTypeScript.Front.UI\modules\Front"
+REM call "_module.bat"
+
+REM pushd %currentDir%
+
 rd /S /Q "website"
 
 robocopy "..\..\..\NovaBurst.ModularTypeScript.Core.UI\modules" "website\modules" /E /njh /njs /ndl /nc /ns /nfl

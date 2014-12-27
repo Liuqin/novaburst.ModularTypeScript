@@ -1,0 +1,7 @@
+﻿{
+    "dependencies": [ "modules/Person/module.json" ],
+
+    "scripts": [
+        "models/Customer"
+    ]
+}

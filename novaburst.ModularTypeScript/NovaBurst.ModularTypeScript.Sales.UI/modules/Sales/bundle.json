@@ -1,7 +1,0 @@
-﻿{
-    "dependencies": [ "modules/Person/bundle.json" ],
-
-    "scripts": [
-        "models/Customer"
-    ]
-}

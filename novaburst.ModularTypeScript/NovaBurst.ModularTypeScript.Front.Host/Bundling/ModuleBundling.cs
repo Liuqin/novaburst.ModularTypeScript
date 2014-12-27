@@ -27,7 +27,7 @@ namespace NovaBurst.ModularTypeScript.Front.Host
         private static void BundleModule(string moduleDir)
         {
             // take bundle.json
-            string bundleInfoJson = File.ReadAllText(Path.Combine(moduleDir, "bundle.json"));
+            string bundleInfoJson = File.ReadAllText(Path.Combine(moduleDir, "module.json"));
             ModuleBundle bundleInfo = JsonConvert.DeserializeObject<ModuleBundle>(bundleInfoJson);
 
             if (bundleInfo != null)
@@ -41,6 +41,8 @@ namespace NovaBurst.ModularTypeScript.Front.Host
 
         private static void BundleModuleScripts(string moduleDir, ModuleBundle bundleInfo)
         {
+            string bundlePath = Path.Combine(moduleDir, "module.min.js");
+
             // create bundle
             var bundle = Bundle.JavaScript().ForceRelease();
 
@@ -51,11 +53,8 @@ namespace NovaBurst.ModularTypeScript.Front.Host
             }
 
             // render bundle to disk in current module folder
-            bundle.Render(Path.Combine(moduleDir, "bundle.js"));
+            bundle.Render(bundlePath);
 
-            // create init.min
-            Bundle.JavaScript().ForceRelease().Add(Path.Combine(moduleDir, "init.js")).Render(Path.Combine(moduleDir, "init.min.js"));
-            
         }
     }
 }

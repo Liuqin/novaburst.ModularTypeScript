@@ -12,7 +12,7 @@ namespace NovaBurst.ModularTypeScript.Front.Host
         public static void Start()
         {
             // get host config
-            FrontHostConfig config = FrontHostConfig.GetDefault();
+            HostConfig config = HostConfig.GetDefault();
 
             // start OWIN host using the Startup class which will configure current hosting
             using (WebApp.Start<Startup>(config.Url))

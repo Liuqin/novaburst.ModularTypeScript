@@ -16,7 +16,7 @@ namespace NovaBurst.ModularTypeScript.Front.Host
         public void Configuration(IAppBuilder app)
         {
             // get host config
-            FrontHostConfig config = FrontHostConfig.GetDefault();
+            HostConfig config = HostConfig.GetDefault();
 
             // bundle and minify all modules
             ModuleBundling.BundleAll(Path.Combine(config.WebsiteLocation, "modules"));

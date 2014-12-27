@@ -1,16 +1,17 @@
-﻿/// <reference path="../../../NovaBurst.ModularTypeScript.Core.UI/modules/Core/init.ts" />
+﻿/// <amd-dependency path="modules/Front/module" />
+/// <reference path="../../../NovaBurst.ModularTypeScript.Core.UI/modules/Core/init.ts" />
 /// <reference path="../../../NovaBurst.ModularTypeScript.Person.UI/modules/Person/init.ts" />
 /// <reference path="../../../NovaBurst.ModularTypeScript.Sales.UI/modules/Sales/init.ts" />
 /// <reference path="controllers/FrontController.ts" />
-define(["require", "exports", '../../../NovaBurst.ModularTypeScript.Core.UI/modules/Core/init', '../../../NovaBurst.ModularTypeScript.Person.UI/modules/Person/init', '../../../NovaBurst.ModularTypeScript.Sales.UI/modules/Sales/init', '../../../NovaBurst.ModularTypeScript.Core.UI/modules/Core/utility/Module'], function(require, exports, Core, Person, Sales, Module) {
-    Core;
-    Person;
-    Sales;
-
-    Module.ModuleLoader.loadModule('Front', 'NovaBurst.ModularTypeScript.Front');
-
-    var Front = NovaBurst.ModularTypeScript.Front;
-    
-    return Front;
-});
+/// <reference path="../../../NovaBurst.ModularTypeScript.Core.UI/scripts/typings/angularjs/angular.d.ts" />
+//import Core = require('../../../NovaBurst.ModularTypeScript.Core.UI/modules/Core/init');
+//import Person = require('../../../NovaBurst.ModularTypeScript.Person.UI/modules/Person/init');
+//import Sales = require('../../../NovaBurst.ModularTypeScript.Sales.UI/modules/Sales/init');
+//Core;
+//Person;
+//Sales;
+////import Module = require('../../../NovaBurst.ModularTypeScript.Core.UI/modules/Core.Module/Module');
+////Module.ModuleLoader.loadModule('Front', 'NovaBurst.ModularTypeScript.Front');
+//import Front = NovaBurst.ModularTypeScript.Front;
+//export = Front;
 //# sourceMappingURL=init.js.map

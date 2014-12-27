@@ -59,9 +59,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="scripts\angular.min.js.map" />
-    <Content Include="packages.config" />
-    <Content Include="modules\Front\bundle.json" />
+    <Content Include="modules\Front\module.json" />
+    <Content Include="modules\Front\_module.bat" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -70,30 +69,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="scripts\angular-mocks.js" />
-    <Content Include="scripts\angular.js" />
-    <Content Include="scripts\angular.min.js" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <None Include="scripts\jquery-2.1.1.intellisense.js" />
-    <Content Include="scripts\bootstrap.js" />
-    <Content Include="scripts\bootstrap.min.js" />
-    <Content Include="scripts\jquery-2.1.1.js" />
-    <Content Include="scripts\jquery-2.1.1.min.js" />
-    <Content Include="scripts\npm.js" />
-    <Content Include="scripts\r.js" />
-    <Content Include="scripts\require.js" />
     <Content Include="Views\Index.html" />
     <Content Include="Web.config" />
-    <Content Include="scripts\jquery-2.1.1.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -101,20 +78,12 @@
   <ItemGroup>
     <TypeScriptCompile Include="modules\Front\init.angular.ts" />
     <TypeScriptCompile Include="modules\Front\controllers\FrontController.ts" />
-    <Content Include="modules\Front\main.js" />
-    <TypeScriptCompile Include="modules\Front\init.ts" />
-    <TypeScriptCompile Include="scripts\typings\angularjs\angular-animate.d.ts" />
-    <TypeScriptCompile Include="scripts\typings\angularjs\angular-cookies.d.ts" />
-    <TypeScriptCompile Include="scripts\typings\angularjs\angular-mocks.d.ts" />
-    <TypeScriptCompile Include="scripts\typings\angularjs\angular-resource.d.ts" />
-    <TypeScriptCompile Include="scripts\typings\angularjs\angular-route.d.ts" />
-    <TypeScriptCompile Include="scripts\typings\angularjs\angular-sanitize.d.ts" />
-    <TypeScriptCompile Include="scripts\typings\angularjs\angular.d.ts" />
-    <TypeScriptCompile Include="scripts\typings\jquery\jquery.d.ts" />
-    <TypeScriptCompile Include="scripts\typings\requirejs\require.d.ts" />
+    <TypeScriptCompile Include="modules\Front\main.ts" />
+    <TypeScriptCompile Include="modules\Front\ref.ts" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="modules\Front\directives\" />
+    <Folder Include="modules\Front\filters\" />
     <Folder Include="modules\Front\models\" />
     <Folder Include="modules\Front\services\" />
   </ItemGroup>

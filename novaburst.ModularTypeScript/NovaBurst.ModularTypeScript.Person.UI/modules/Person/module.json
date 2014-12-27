@@ -1,0 +1,10 @@
+﻿{
+    "dependencies": [ "modules/Core/module.json" ],
+
+    "scripts": [
+        "models/Person",
+        "models/PersonAddress",
+        "models/PersonPhone",
+        "models/PersonPhoneType"
+    ]
+}

@@ -87,7 +87,7 @@
   <ItemGroup>
     <Compile Include="Bundling\ModuleBundling.cs" />
     <Compile Include="Bundling\ModuleBundle.cs" />
-    <Compile Include="Configuration\FrontHostConfig.cs" />
+    <Compile Include="Configuration\HostConfig.cs" />
     <Compile Include="Exceptions\FrontHostConfigNotFoundException.cs" />
     <Compile Include="FileServerContentTypeProvider.cs" />
     <Compile Include="Program.cs" />
