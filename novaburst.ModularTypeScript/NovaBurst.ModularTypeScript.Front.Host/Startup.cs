@@ -15,10 +15,14 @@ namespace NovaBurst.ModularTypeScript.Front.Host
     {
         public void Configuration(IAppBuilder app)
         {
-            // use a file server to serve all static content (js, css, content, html, ...) and also configure default files (eg: index.html to be the default entry point)
-
             // get host config
             FrontHostConfig config = FrontHostConfig.GetDefault();
+
+            // bundle and minify all modules
+            ModuleBundling.BundleAll(Path.Combine(config.WebsiteLocation, "modules"));
+
+
+            // use a file server to serve all static content (js, css, content, html, ...) and also configure default files (eg: index.html to be the default entry point)
 
             // setup default documents
             app.UseDefaultFiles(new DefaultFilesOptions
@@ -30,13 +34,18 @@ namespace NovaBurst.ModularTypeScript.Front.Host
                 }
             });
 
+
             // start file server to share website static content
             // wrapper around: StaticFiles + DefaultFiles + DirectoryBrowser
-            app.UseFileServer(new FileServerOptions
+            var fileServerOptions = new FileServerOptions
             {
                 EnableDirectoryBrowsing = false,
-                FileSystem = new PhysicalFileSystem(config.WebsiteLocation)
-            });
+                FileSystem = new PhysicalFileSystem(config.WebsiteLocation),
+            };
+
+            fileServerOptions.StaticFileOptions.ContentTypeProvider = new FileServerContentTypeProvider();
+
+            app.UseFileServer(fileServerOptions);
         }
     }
 }

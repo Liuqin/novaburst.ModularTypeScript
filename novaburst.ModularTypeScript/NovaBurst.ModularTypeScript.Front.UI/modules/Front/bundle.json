@@ -1,0 +1,8 @@
+﻿{
+    "dependencies": [ "scripts/angular", "modules/Sales/bundle.json" ],
+
+    "scripts": [
+        "init.angular",
+        "controllers/FrontController"
+    ]
+}

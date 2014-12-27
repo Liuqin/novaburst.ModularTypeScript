@@ -2,17 +2,12 @@
 (function (NovaBurst) {
     (function (ModularTypeScript) {
         (function (Front) {
-            var FrontController = (function () {
-                function FrontController() {
-                }
-                return FrontController;
-            })();
-            Front.FrontController = FrontController;
+            Front.moduleName = 'NovaBurst.ModularTypeScript.Front';
 
-            angular.module(Front.moduleName).controller('FrontController', FrontController);
+            angular.module(Front.moduleName, []);
         })(ModularTypeScript.Front || (ModularTypeScript.Front = {}));
         var Front = ModularTypeScript.Front;
     })(NovaBurst.ModularTypeScript || (NovaBurst.ModularTypeScript = {}));
     var ModularTypeScript = NovaBurst.ModularTypeScript;
 })(NovaBurst || (NovaBurst = {}));
-//# sourceMappingURL=FrontController.js.map
+//# sourceMappingURL=init.angular.js.map

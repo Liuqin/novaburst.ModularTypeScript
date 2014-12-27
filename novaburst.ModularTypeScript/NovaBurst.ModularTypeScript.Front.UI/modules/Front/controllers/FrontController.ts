@@ -4,5 +4,5 @@
         public x: string;
     }
 
-    angular.module('NovaBurst.ModularTypeScript.Front').controller('FrontController', FrontController);
+    angular.module(moduleName).controller('FrontController', FrontController);
 }  

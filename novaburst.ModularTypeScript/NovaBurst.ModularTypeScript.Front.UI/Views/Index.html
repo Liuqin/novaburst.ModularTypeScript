@@ -5,26 +5,6 @@
 </head>
 <body>
     <script src="scripts/require.js"></script>
-
-    <script>
-        // configure requireJS
-        require.config(
-            {
-                paths:
-                {
-                    'modules/../../NovaBurst.ModularTypeScript.Core.UI': '.',
-                    'modules/../../NovaBurst.ModularTypeScript.Person.UI': '.',
-                    'modules/../../NovaBurst.ModularTypeScript.Sales.UI': '.',
-                    'modules/../../NovaBurst.ModularTypeScript.Front.UI': '.',
-                    'scripts/jquery': 'scripts/jquery-2.1.1'
-                }
-            });
-
-        require(['modules/Front/ModuleInit'],
-            // success
-            function () { },
-            // error
-            function () { });
-    </script>
+    <script src="modules/Front/Main.js"></script>
 </body>
 </html>

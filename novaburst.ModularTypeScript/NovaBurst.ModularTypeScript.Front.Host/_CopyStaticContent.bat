@@ -1,4 +1,5 @@
-﻿rd /S /Q "website"
+﻿
+rd /S /Q "website"
 
 robocopy "..\..\..\NovaBurst.ModularTypeScript.Core.UI\modules" "website\modules" /E /njh /njs /ndl /nc /ns /nfl
 robocopy "..\..\..\NovaBurst.ModularTypeScript.Core.UI\scripts" "website\scripts" /E /njh /njs /ndl /nc /ns /nfl
