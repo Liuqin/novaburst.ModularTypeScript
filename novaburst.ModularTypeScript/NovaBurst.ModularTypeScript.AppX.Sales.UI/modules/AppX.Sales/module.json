@@ -1,0 +1,11 @@
+﻿{
+    "dependencies": [ "modules/AppX.Core/module.json", "scripts/angular" ],
+
+    "scripts": [
+        "module.angular",
+        "models/Customer",
+        "models/CustomerFilter",
+        "interfaces/ICustomerService",
+        "services/CustomerService"
+    ]
+}

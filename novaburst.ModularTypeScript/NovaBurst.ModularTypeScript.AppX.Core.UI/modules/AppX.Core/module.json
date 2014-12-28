@@ -1,0 +1,13 @@
+﻿{
+    "dependencies": [ "modules/Core/module.json" ],
+
+    "scripts": [
+        "models/Address",
+        "models/Phone",
+        "models/Person",
+        "models/PersonFilter",
+        "models/PersonAddress",
+        "models/PersonPhone",
+        "models/PersonPhoneType"
+    ]
+}

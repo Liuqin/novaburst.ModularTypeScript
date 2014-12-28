@@ -8,12 +8,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{B13283DB-75D4-4A95-9CAA-DF2D94E547F8}</ProjectGuid>
+    <ProjectGuid>{A1393F60-C816-4DA9-BC7C-AEE6B5D6D978}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NovaBurst.ModularTypeScript.Core.UI</RootNamespace>
-    <AssemblyName>NovaBurst.ModularTypeScript.Core.UI</AssemblyName>
+    <RootNamespace>NovaBurst.ModularTypeScript.AppX.Front.UI</RootNamespace>
+    <AssemblyName>NovaBurst.ModularTypeScript.AppX.Front.UI</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -59,20 +59,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="scripts\angular.min.js.map" />
-    <Content Include="packages.config" />
-    <Content Include="modules\Core\module.json" />
-    <Content Include="modules\Core\_module.bat" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="modules\AppX.Front\module.json" />
+    <Content Include="modules\AppX.Front\_module.bat" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -81,42 +69,17 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="scripts\angular-mocks.js" />
-    <Content Include="scripts\angular.js" />
-    <Content Include="scripts\angular.min.js" />
-    <None Include="scripts\jquery-2.1.1.intellisense.js" />
-    <Content Include="scripts\bootstrap.js" />
-    <Content Include="scripts\bootstrap.min.js" />
-    <Content Include="scripts\jquery-2.1.1.js" />
-    <Content Include="scripts\jquery-2.1.1.min.js" />
-    <Content Include="scripts\npm.js" />
-    <Content Include="scripts\r.js" />
-    <Content Include="scripts\require.js" />
+    <Content Include="Views\Index.html" />
     <Content Include="Web.config" />
-    <Content Include="scripts\jquery-2.1.1.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="modules\Core\List\models\ListOptions.ts" />
-    <TypeScriptCompile Include="modules\Core\List\models\OrderOptions.ts" />
-    <TypeScriptCompile Include="modules\Core\List\models\OrderOptionsField.ts" />
-    <TypeScriptCompile Include="modules\Core\List\models\PagedList.ts" />
-    <TypeScriptCompile Include="modules\Core\List\models\PagingOptions.ts" />
-    <TypeScriptCompile Include="modules\Core\Model\interfaces\IEntityService.ts" />
-    <TypeScriptCompile Include="modules\Core\ref.ts" />
-    <TypeScriptCompile Include="modules\Core\Module\moduleLoader.ts" />
-    <TypeScriptCompile Include="modules\Core\Model\services\EntityService.ts" />
-    <TypeScriptCompile Include="scripts\typings\angularjs\angular-animate.d.ts" />
-    <TypeScriptCompile Include="scripts\typings\angularjs\angular-cookies.d.ts" />
-    <TypeScriptCompile Include="scripts\typings\angularjs\angular-mocks.d.ts" />
-    <TypeScriptCompile Include="scripts\typings\angularjs\angular-resource.d.ts" />
-    <TypeScriptCompile Include="scripts\typings\angularjs\angular-route.d.ts" />
-    <TypeScriptCompile Include="scripts\typings\angularjs\angular-sanitize.d.ts" />
-    <TypeScriptCompile Include="scripts\typings\angularjs\angular.d.ts" />
-    <TypeScriptCompile Include="scripts\typings\jquery\jquery.d.ts" />
-    <TypeScriptCompile Include="scripts\typings\requirejs\require.d.ts" />
+    <TypeScriptCompile Include="modules\AppX.Front\module.angular.ts" />
+    <TypeScriptCompile Include="modules\AppX.Front\controllers\FrontController.ts" />
+    <TypeScriptCompile Include="modules\AppX.Front\main.ts" />
+    <TypeScriptCompile Include="modules\AppX.Front\ref.ts" />
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>
@@ -126,6 +89,7 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
     <TypeScriptModuleKind>amd</TypeScriptModuleKind>
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
@@ -136,9 +100,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>59532</DevelopmentServerPort>
+          <DevelopmentServerPort>47534</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:59532/</IISUrl>
+          <IISUrl>http://localhost:47534/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

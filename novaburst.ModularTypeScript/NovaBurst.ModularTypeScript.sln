@@ -3,18 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NovaBurst.ModularTypeScript.Person.UI", "NovaBurst.ModularTypeScript.Person.UI\NovaBurst.ModularTypeScript.Person.UI.csproj", "{C24A4FE2-DF72-4DCB-9DA5-CCFAAE80B81E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NovaBurst.ModularTypeScript.AppX.Core.UI", "NovaBurst.ModularTypeScript.AppX.Core.UI\NovaBurst.ModularTypeScript.AppX.Core.UI.csproj", "{C24A4FE2-DF72-4DCB-9DA5-CCFAAE80B81E}"
 	ProjectSection(ProjectDependencies) = postProject
 		{B13283DB-75D4-4A95-9CAA-DF2D94E547F8} = {B13283DB-75D4-4A95-9CAA-DF2D94E547F8}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NovaBurst.ModularTypeScript.Sales.UI", "NovaBurst.ModularTypeScript.Sales.UI\NovaBurst.ModularTypeScript.Sales.UI.csproj", "{958C8A72-2046-48A1-819E-B3746C0AE615}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NovaBurst.ModularTypeScript.AppX.Sales.UI", "NovaBurst.ModularTypeScript.AppX.Sales.UI\NovaBurst.ModularTypeScript.AppX.Sales.UI.csproj", "{958C8A72-2046-48A1-819E-B3746C0AE615}"
 	ProjectSection(ProjectDependencies) = postProject
 		{B13283DB-75D4-4A95-9CAA-DF2D94E547F8} = {B13283DB-75D4-4A95-9CAA-DF2D94E547F8}
 		{C24A4FE2-DF72-4DCB-9DA5-CCFAAE80B81E} = {C24A4FE2-DF72-4DCB-9DA5-CCFAAE80B81E}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NovaBurst.ModularTypeScript.Front.Host", "NovaBurst.ModularTypeScript.Front.Host\NovaBurst.ModularTypeScript.Front.Host.csproj", "{CEF5F1D9-9674-48E2-82FD-32288314AC19}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NovaBurst.ModularTypeScript.AppX.Front.Host", "NovaBurst.ModularTypeScript.AppX.Front.Host\NovaBurst.ModularTypeScript.AppX.Front.Host.csproj", "{CEF5F1D9-9674-48E2-82FD-32288314AC19}"
 	ProjectSection(ProjectDependencies) = postProject
 		{A1393F60-C816-4DA9-BC7C-AEE6B5D6D978} = {A1393F60-C816-4DA9-BC7C-AEE6B5D6D978}
 		{958C8A72-2046-48A1-819E-B3746C0AE615} = {958C8A72-2046-48A1-819E-B3746C0AE615}
@@ -26,23 +26,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01. Core", "01. Core", "{EF
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NovaBurst.ModularTypeScript.Core.UI", "NovaBurst.ModularTypeScript.Core.UI\NovaBurst.ModularTypeScript.Core.UI.csproj", "{B13283DB-75D4-4A95-9CAA-DF2D94E547F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NovaBurst.ModularTypeScript.Front.UI", "NovaBurst.ModularTypeScript.Front.UI\NovaBurst.ModularTypeScript.Front.UI.csproj", "{A1393F60-C816-4DA9-BC7C-AEE6B5D6D978}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NovaBurst.ModularTypeScript.AppX.Front.UI", "NovaBurst.ModularTypeScript.AppX.Front.UI\NovaBurst.ModularTypeScript.AppX.Front.UI.csproj", "{A1393F60-C816-4DA9-BC7C-AEE6B5D6D978}"
 	ProjectSection(ProjectDependencies) = postProject
 		{958C8A72-2046-48A1-819E-B3746C0AE615} = {958C8A72-2046-48A1-819E-B3746C0AE615}
 		{B13283DB-75D4-4A95-9CAA-DF2D94E547F8} = {B13283DB-75D4-4A95-9CAA-DF2D94E547F8}
 		{C24A4FE2-DF72-4DCB-9DA5-CCFAAE80B81E} = {C24A4FE2-DF72-4DCB-9DA5-CCFAAE80B81E}
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02. Person", "02. Person", "{74EEDC49-5AF6-4489-AF26-B8D4C516424A}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02. AppX.Core", "02. AppX.Core", "{74EEDC49-5AF6-4489-AF26-B8D4C516424A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03. Sales", "03. Sales", "{2F7CC940-E814-4C38-BCED-F084DA0124F2}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03. AppX.Sales", "03. AppX.Sales", "{2F7CC940-E814-4C38-BCED-F084DA0124F2}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04. Front", "04. Front", "{BB79A639-E6AF-4F85-885C-57F952C203D8}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04. AppX.Front", "04. AppX.Front", "{BB79A639-E6AF-4F85-885C-57F952C203D8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C8FD8C07-722B-49F8-AA29-6474BCE974ED}"
 	ProjectSection(SolutionItems) = preProject
 		WebEssentials-Settings.json = WebEssentials-Settings.json
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NovaBurst.ModularTypeScript.Core", "NovaBurst.ModularTypeScript.Core\NovaBurst.ModularTypeScript.Core.csproj", "{D0B72D9B-1A61-4D13-B9EA-F0AACEB11CBC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -70,6 +72,10 @@ Global
 		{A1393F60-C816-4DA9-BC7C-AEE6B5D6D978}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1393F60-C816-4DA9-BC7C-AEE6B5D6D978}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A1393F60-C816-4DA9-BC7C-AEE6B5D6D978}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0B72D9B-1A61-4D13-B9EA-F0AACEB11CBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0B72D9B-1A61-4D13-B9EA-F0AACEB11CBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0B72D9B-1A61-4D13-B9EA-F0AACEB11CBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0B72D9B-1A61-4D13-B9EA-F0AACEB11CBC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -80,5 +86,6 @@ Global
 		{CEF5F1D9-9674-48E2-82FD-32288314AC19} = {BB79A639-E6AF-4F85-885C-57F952C203D8}
 		{B13283DB-75D4-4A95-9CAA-DF2D94E547F8} = {EFB64586-8738-4A60-9425-32BD9B5C242C}
 		{A1393F60-C816-4DA9-BC7C-AEE6B5D6D978} = {BB79A639-E6AF-4F85-885C-57F952C203D8}
+		{D0B72D9B-1A61-4D13-B9EA-F0AACEB11CBC} = {EFB64586-8738-4A60-9425-32BD9B5C242C}
 	EndGlobalSection
 EndGlobal

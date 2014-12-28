@@ -1,6 +1,11 @@
 ﻿{
     "scripts": [
-        "models/Address",
-        "models/Phone"
+        "List/models/PagingOptions",
+        "List/models/PagedList",
+        "List/models/OrderOptionsField",
+        "List/models/OrderOptions",
+        "List/models/ListOptions",
+        "Model/interfaces/IEntityService",
+        "Model/services/EntityService"
     ]
 }

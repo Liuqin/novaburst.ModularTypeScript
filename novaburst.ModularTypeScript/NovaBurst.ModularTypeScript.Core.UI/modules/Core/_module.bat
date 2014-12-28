@@ -1,4 +1,9 @@
 tsc --module AMD --sourcemap --out module.js ^
-models\Address.ts ^
-models\Phone.ts ^
+List/models/PagingOptions.ts ^
+List/models/PagedList.ts ^
+List/models/OrderOptionsField.ts ^
+List/models/OrderOptions.ts ^
+List/models/ListOptions.ts ^
+Model/interfaces/IEntityService.ts ^
+Model/services/EntityService.ts ^
 ref.ts
