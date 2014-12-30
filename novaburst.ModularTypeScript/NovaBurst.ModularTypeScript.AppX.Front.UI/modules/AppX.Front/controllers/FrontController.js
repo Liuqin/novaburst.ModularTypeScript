@@ -19,7 +19,7 @@
                 Front.FrontController = FrontController;
 
                 // register angular controller
-                angular.module(Front.angularModuleName).controller('FrontController', FrontController);
+                angular.module(Front.angularModuleName).controller('FrontController', ['$scope', '$location', FrontController]);
             })(AppX.Front || (AppX.Front = {}));
             var Front = AppX.Front;
         })(ModularTypeScript.AppX || (ModularTypeScript.AppX = {}));

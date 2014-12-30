@@ -35,30 +35,8 @@ namespace NovaBurst.ModularTypeScript.AppX.Front.Host
         {
             // use a file server to serve all static content (js, css, content, html, ...) and also configure default files (eg: index.html to be the default entry point)
 
-            // UI assembly locations
-            string[] rootPaths = Directory.GetDirectories(config.RootDirectory, "*.UI");
-
-            // common paths under root paths and also as request paths
-            string[] commonPaths = new string[]
-            {
-                @"content",
-                @"scripts",
-                @"modules",
-                @"fonts",
-                @"views"
-            };
-
-            // create a list of file system mappings
-            var fileSystems = 
-                from rootPath in rootPaths
-                from commonPath in commonPaths
-                let reqCommonPath = commonPath.Replace(@"\", "/")
-                let rootCommonPath = Path.Combine(rootPath, commonPath).Replace(@"\", "/")
-                where Directory.Exists(rootCommonPath)
-                select new FileSystemMapping(reqCommonPath, new PhysicalFileSystem(rootCommonPath));
-
             // create file system that will locate the files
-            var fileSystem = new AggregateFileSystem(fileSystems);
+            var fileSystem = AggregateFileSystem.FromWebUiPhysicalPaths(config.RootDirectory);
 
             // setup default documents
             app.UseDefaultFiles(new DefaultFilesOptions

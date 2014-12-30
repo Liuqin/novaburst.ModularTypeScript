@@ -52,7 +52,7 @@ var NovaBurst;
                 Sales.ProductController = ProductController;
 
                 // register angular controller
-                angular.module(Sales.angularModuleName).controller('ProductController', ProductController);
+                angular.module(Sales.angularModuleName).controller('ProductController', ['$scope', '$location', 'ProductService', ProductController]);
             })(AppX.Sales || (AppX.Sales = {}));
             var Sales = AppX.Sales;
         })(ModularTypeScript.AppX || (ModularTypeScript.AppX = {}));

@@ -30,7 +30,6 @@ namespace NovaBurst.ModularTypeScript.Core
             this.Children = new Dictionary<string, List<FileSystemChildNode>>();
         }
 
-
         /// <summary>
         /// Add file system mappings.
         /// </summary>

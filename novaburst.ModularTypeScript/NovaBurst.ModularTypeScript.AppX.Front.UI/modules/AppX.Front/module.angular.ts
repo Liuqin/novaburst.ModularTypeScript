@@ -9,11 +9,11 @@
             'ngRoute',
             NovaBurst.ModularTypeScript.AppX.Sales.angularModuleName
         ])
-        .config(function ($routeProvider: ng.route.IRouteProvider) {
+        .config([ '$routeProvider', function ($routeProvider: ng.route.IRouteProvider) {
 
-        // configure router
-        configureRouter($routeProvider);
-    });
+            // configure router
+            configureRouter($routeProvider);
+        }]);
 
 
     // configure router

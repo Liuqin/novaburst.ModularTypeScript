@@ -38,5 +38,5 @@
 
 
     // register angular controller
-    angular.module(angularModuleName).controller('CustomerController', CustomerController);
+    angular.module(angularModuleName).controller('CustomerController', ['$scope', '$location', 'CustomerService', CustomerController]);
 } 

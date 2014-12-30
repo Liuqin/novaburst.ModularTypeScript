@@ -3,15 +3,16 @@
 // main entry point
 module NovaBurst.ModularTypeScript.AppX.Front {
 
-    // set debug or release mode
-    window['isDebugMode'] = true;
+    // set debug or release mode - depending on debug query string param
+    window['isDebugMode'] = new RegExp('(\\?|(\\?.*&))debug(|&|=)').exec(document.URL) ? true : false;
 
 
     // RequireJS shim config
     var shimConfig: any =
         {
             'scripts/bootstrap': ['scripts/jquery'],
-            'scripts/angular-route': ['scripts/angular']
+            'scripts/angular-route': ['scripts/angular'],
+            'scripts/purl': ['scripts/jquery']
         };
 
     // configure requireJS differently for debug and release modes

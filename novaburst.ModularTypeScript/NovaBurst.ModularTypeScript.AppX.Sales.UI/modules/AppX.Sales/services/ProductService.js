@@ -37,7 +37,7 @@
                 Sales.ProductService = ProductService;
 
                 // register angular service
-                angular.module(Sales.angularModuleName).service('ProductService', ProductService);
+                angular.module(Sales.angularModuleName).service('ProductService', ['EntityService', ProductService]);
             })(AppX.Sales || (AppX.Sales = {}));
             var Sales = AppX.Sales;
         })(ModularTypeScript.AppX || (ModularTypeScript.AppX = {}));

@@ -50,5 +50,5 @@
 
 
     // register angular controller
-    angular.module(angularModuleName).controller('ProductController', ProductController);
+    angular.module(angularModuleName).controller('ProductController', ['$scope', '$location', 'ProductService', ProductController]);
 } 

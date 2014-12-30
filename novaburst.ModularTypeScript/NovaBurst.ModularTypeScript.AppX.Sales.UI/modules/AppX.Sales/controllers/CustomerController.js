@@ -44,7 +44,7 @@ var NovaBurst;
                 Sales.CustomerController = CustomerController;
 
                 // register angular controller
-                angular.module(Sales.angularModuleName).controller('CustomerController', CustomerController);
+                angular.module(Sales.angularModuleName).controller('CustomerController', ['$scope', '$location', 'CustomerService', CustomerController]);
             })(AppX.Sales || (AppX.Sales = {}));
             var Sales = AppX.Sales;
         })(ModularTypeScript.AppX || (ModularTypeScript.AppX = {}));

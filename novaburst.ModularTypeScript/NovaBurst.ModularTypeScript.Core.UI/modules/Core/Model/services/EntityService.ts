@@ -119,5 +119,5 @@
 
 
     // register angular service
-    angular.module(angularModuleName).service('EntityService', EntityService);
+    angular.module(angularModuleName).service('EntityService', ['$q', '$http', EntityService]);
 }

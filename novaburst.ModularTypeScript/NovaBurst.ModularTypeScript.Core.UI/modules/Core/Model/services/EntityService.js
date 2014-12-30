@@ -116,7 +116,7 @@
             Core.EntityService = EntityService;
 
             // register angular service
-            angular.module(Core.angularModuleName).service('EntityService', EntityService);
+            angular.module(Core.angularModuleName).service('EntityService', ['$q', '$http', EntityService]);
         })(ModularTypeScript.Core || (ModularTypeScript.Core = {}));
         var Core = ModularTypeScript.Core;
     })(NovaBurst.ModularTypeScript || (NovaBurst.ModularTypeScript = {}));

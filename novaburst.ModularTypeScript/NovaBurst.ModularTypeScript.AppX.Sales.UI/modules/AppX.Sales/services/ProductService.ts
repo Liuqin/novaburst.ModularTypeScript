@@ -39,5 +39,5 @@
 
 
     // register angular service
-    angular.module(angularModuleName).service('ProductService', ProductService);
+    angular.module(angularModuleName).service('ProductService', ['EntityService', ProductService]);
 }

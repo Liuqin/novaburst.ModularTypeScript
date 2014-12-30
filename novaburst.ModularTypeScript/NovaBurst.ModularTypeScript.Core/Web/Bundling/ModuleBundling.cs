@@ -56,7 +56,6 @@ namespace NovaBurst.ModularTypeScript.Core.Web.Bundling
 
             // render bundle to disk in current module folder
             bundle.Render(bundlePath);
-
         }
     }
 }

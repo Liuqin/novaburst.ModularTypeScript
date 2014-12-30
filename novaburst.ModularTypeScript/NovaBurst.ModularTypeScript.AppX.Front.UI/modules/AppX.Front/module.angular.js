@@ -8,10 +8,11 @@
                 var angularModule = angular.module(Front.angularModuleName, [
                     'ngRoute',
                     NovaBurst.ModularTypeScript.AppX.Sales.angularModuleName
-                ]).config(function ($routeProvider) {
-                    // configure router
-                    configureRouter($routeProvider);
-                });
+                ]).config([
+                    '$routeProvider', function ($routeProvider) {
+                        // configure router
+                        configureRouter($routeProvider);
+                    }]);
 
                 // configure router
                 function configureRouter($routeProvider) {

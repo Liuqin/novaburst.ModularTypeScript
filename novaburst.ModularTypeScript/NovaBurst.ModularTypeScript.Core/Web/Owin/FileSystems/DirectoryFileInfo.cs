@@ -47,6 +47,7 @@ namespace NovaBurst.ModularTypeScript.Core
         public DirectoryFileInfo(string path, string name)
         {
             this._path = path;
+            this._name = name;
         }
     }
 }

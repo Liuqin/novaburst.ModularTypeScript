@@ -20,5 +20,5 @@
 
 
     // register angular controller
-    angular.module(angularModuleName).controller('FrontController', FrontController);
+    angular.module(angularModuleName).controller('FrontController', ['$scope', '$location', FrontController]);
 }  
