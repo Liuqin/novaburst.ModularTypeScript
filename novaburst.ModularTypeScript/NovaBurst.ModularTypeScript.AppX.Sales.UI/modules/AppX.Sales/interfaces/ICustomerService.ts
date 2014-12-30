@@ -2,6 +2,9 @@
 
     import Core = NovaBurst.ModularTypeScript.Core;
 
-    export interface ICustomerService extends Core.IEntityService<Customer> {
+    export interface ICustomerService {
+
+        // get by ID
+        getById(id: string): ng.IPromise<Customer>;
     }
 } 

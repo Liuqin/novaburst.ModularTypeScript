@@ -18,7 +18,7 @@ namespace NovaBurst.ModularTypeScript.AppX.Front.Host
         private static class ConfigurationPropertyNames
         {
             public const string Url = "url";
-            public const string WebsiteLocation = "websiteLocation";
+            public const string RootDirectory = "rootDirectory";
         }
 
         /// <summary>
@@ -32,18 +32,18 @@ namespace NovaBurst.ModularTypeScript.AppX.Front.Host
         }
 
         /// <summary>
-        /// Website static files location.
+        /// Root directory.
         /// </summary>
-        [ConfigurationProperty(ConfigurationPropertyNames.WebsiteLocation, DefaultValue = "website")]
-        public string WebsiteLocation
+        [ConfigurationProperty(ConfigurationPropertyNames.RootDirectory, DefaultValue = "website")]
+        public string RootDirectory
         {
             get 
             { 
-                return (string)this[ConfigurationPropertyNames.WebsiteLocation];
+                return (string)this[ConfigurationPropertyNames.RootDirectory];
             }
             set 
             { 
-                this[ConfigurationPropertyNames.WebsiteLocation] = value; 
+                this[ConfigurationPropertyNames.RootDirectory] = value; 
             }
         }
 

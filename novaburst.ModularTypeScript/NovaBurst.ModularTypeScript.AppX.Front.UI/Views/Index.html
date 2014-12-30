@@ -1,10 +1,26 @@
 ﻿<!DOCTYPE html>
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
+
+    <link rel="stylesheet" href="Content\bootstrap.css" />
 </head>
 <body>
-    <script src="scripts/require.js"></script>
+
+    <div class="container" ng-controller="FrontController" ng-style="{ display: front? '' : 'none' }" style="display: none;">
+
+        <h2>Hello! Modular TypeScript.</h2>
+        <hr />
+
+        <br/>
+        <h3>{{ front.greetings }}</h3>
+
+        <br />
+        <div ng-view=""></div>
+    </div>
+
+    <script src="scripts/require.js"></script>    
     <script src="modules/AppX.Front/main.js"></script>
 </body>
 </html>

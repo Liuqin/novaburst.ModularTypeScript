@@ -5,7 +5,7 @@
             (function (Sales) {
                 Sales.angularModuleName = "NovaBurst.ModularTypeScript.AppX.Sales";
 
-                angular.module(Sales.angularModuleName, []);
+                angular.module(Sales.angularModuleName, [NovaBurst.ModularTypeScript.Core.angularModuleName]);
             })(AppX.Sales || (AppX.Sales = {}));
             var Sales = AppX.Sales;
         })(ModularTypeScript.AppX || (ModularTypeScript.AppX = {}));

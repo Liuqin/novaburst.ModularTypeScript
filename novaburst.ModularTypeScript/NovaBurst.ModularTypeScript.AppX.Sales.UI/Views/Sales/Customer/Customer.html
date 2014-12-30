@@ -1,0 +1,19 @@
+﻿<h3>Customer.html and CustomerController</h3>
+<br/>
+<h4>Please visit also <a ng-click="sales.goToProducts()" style="cursor: pointer;">Products.html and ProductController</a>.</h4>
+<br />
+<br />
+
+<address>
+    <strong>
+        <span>{{ sales.currentCustomer.person.firstName }}</span>
+        <span>{{ sales.currentCustomer.person.middleName }}</span>
+        <span>{{ sales.currentCustomer.person.lastName }}</span>
+    </strong>
+
+    <span>{{ sales.currentCustomer.person.address.addressLine1 }}</span><br/>
+    <span>{{ sales.currentCustomer.person.address.addressLine2 }}</span><br />
+    <span>{{ sales.currentCustomer.person.address.city }}</span><br />
+
+    <abbr title="Phone">P:</abbr> <span>{{ sales.currentCustomer.person.phone.phoneNumber }}</span>
+</address>

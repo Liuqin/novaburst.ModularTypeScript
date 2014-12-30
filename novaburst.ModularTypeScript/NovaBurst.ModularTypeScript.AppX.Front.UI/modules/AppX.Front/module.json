@@ -1,8 +1,9 @@
 ﻿{
-    "dependencies": [ "scripts/angular", "modules/AppX.Sales/module.json" ],
+    "dependencies": [ "scripts/bootstrap", "scripts/angular", "scripts/angular-route", "modules/AppX.Sales/module.json" ],
 
     "scripts": [
         "module.angular",
-        "controllers/FrontController"
+        "controllers/FrontController",
+        "module.angular.bootstrap"
     ]
 }

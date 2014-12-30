@@ -76,6 +76,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="modules\AppX.Front\module.angular.bootstrap.ts" />
     <TypeScriptCompile Include="modules\AppX.Front\module.angular.ts" />
     <TypeScriptCompile Include="modules\AppX.Front\controllers\FrontController.ts" />
     <TypeScriptCompile Include="modules\AppX.Front\main.ts" />

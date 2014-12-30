@@ -4,8 +4,13 @@
     "scripts": [
         "module.angular",
         "models/Customer",
-        "models/CustomerFilter",
+        "models/Product",
         "interfaces/ICustomerService",
-        "services/CustomerService"
+        "interfaces/IProductService",
+        "services/CustomerService",
+        "services/ProductService",
+        "controllers/SalesControllerBase",
+        "controllers/CustomerController",
+        "controllers/ProductController"
     ]
 }

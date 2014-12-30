@@ -12,10 +12,12 @@ namespace NovaBurst.ModularTypeScript.Core.Web.Bundling
 {
     public static class ModuleBundling
     {
-        public static void BundleAll(string modulesDir)
+        public static void BundleAll(string rootDir)
         {
+            string[] appDirs = Directory.GetDirectories(rootDir, "*.UI");
+
             // get a list of module directories
-            string[] moduleDirLst = Directory.GetDirectories(modulesDir);
+            IEnumerable<string> moduleDirLst = appDirs.SelectMany(appDir => Directory.GetDirectories(Path.Combine(appDir, "modules")));
 
             // for each module directory bundle and minify all files included in each module bundle.json
             foreach(string moduleDir in moduleDirLst)

@@ -3,7 +3,6 @@
 /// <reference path="models/Address.ts" />
 /// <reference path="models/Phone.ts" />
 /// <reference path="models/Person.ts" />
-/// <reference path="models/PersonFilter.ts" />
 /// <reference path="models/PersonAddress.ts" />
 /// <reference path="models/PersonPhone.ts" />
 /// <reference path="models/PersonPhoneType.ts" />

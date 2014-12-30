@@ -79,7 +79,6 @@
     <TypeScriptCompile Include="modules\AppX.Core\models\Phone.ts" />
     <TypeScriptCompile Include="modules\AppX.Core\models\Person.ts" />
     <TypeScriptCompile Include="modules\AppX.Core\models\PersonAddress.ts" />
-    <TypeScriptCompile Include="modules\AppX.Core\models\PersonFilter.ts" />
     <TypeScriptCompile Include="modules\AppX.Core\models\PersonPhone.ts" />
     <TypeScriptCompile Include="modules\AppX.Core\models\PersonPhoneType.ts" />
     <TypeScriptCompile Include="modules\AppX.Core\ref.ts" />

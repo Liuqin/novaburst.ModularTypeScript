@@ -1,5 +1,8 @@
 ﻿{
+    "dependencies": [ "scripts/angular" ],
+
     "scripts": [
+        "module.angular",
         "List/models/PagingOptions",
         "List/models/PagedList",
         "List/models/OrderOptionsField",

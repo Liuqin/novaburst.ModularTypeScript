@@ -4,12 +4,21 @@
         (function (AppX) {
             (function (Front) {
                 var FrontController = (function () {
-                    function FrontController() {
+                    function FrontController($scope, $location) {
+                        this.$scope = $scope;
+                        this.$location = $location;
+                        this.greetings = 'Index.html and FrontController';
+                        $scope['front'] = this;
                     }
+                    // go to customer account
+                    FrontController.prototype.goToAccount = function () {
+                        this.$location.url('/account');
+                    };
                     return FrontController;
                 })();
                 Front.FrontController = FrontController;
 
+                // register angular controller
                 angular.module(Front.angularModuleName).controller('FrontController', FrontController);
             })(AppX.Front || (AppX.Front = {}));
             var Front = AppX.Front;

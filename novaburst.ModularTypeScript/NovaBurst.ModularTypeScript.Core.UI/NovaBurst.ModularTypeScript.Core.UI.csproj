@@ -64,7 +64,6 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="scripts\angular.min.js.map" />
     <Content Include="packages.config" />
     <Content Include="modules\Core\module.json" />
     <Content Include="modules\Core\_module.bat" />
@@ -73,6 +72,12 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
+    <Content Include="scripts\angular-route.js" />
+    <Content Include="scripts\angular-route.min.js" />
+    <Content Include="scripts\angular.js" />
+    <Content Include="scripts\angular.min.js" />
+    <Content Include="scripts\angular.min.js.map" />
+    <Content Include="scripts\angular-route.min.js.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -81,10 +86,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="scripts\angular-mocks.js" />
-    <Content Include="scripts\angular.js" />
-    <Content Include="scripts\angular.min.js" />
     <None Include="scripts\jquery-2.1.1.intellisense.js" />
+    <Content Include="scripts\angular-mocks.js" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
     <Content Include="scripts\jquery-2.1.1.js" />
@@ -105,6 +108,7 @@
     <TypeScriptCompile Include="modules\Core\List\models\PagedList.ts" />
     <TypeScriptCompile Include="modules\Core\List\models\PagingOptions.ts" />
     <TypeScriptCompile Include="modules\Core\Model\interfaces\IEntityService.ts" />
+    <TypeScriptCompile Include="modules\Core\module.angular.ts" />
     <TypeScriptCompile Include="modules\Core\ref.ts" />
     <TypeScriptCompile Include="modules\Core\Module\moduleLoader.ts" />
     <TypeScriptCompile Include="modules\Core\Model\services\EntityService.ts" />

@@ -1,4 +1,5 @@
-﻿/// <reference path="List/models/PagingOptions.ts" />
+﻿/// <reference path="module.angular.ts" />
+/// <reference path="List/models/PagingOptions.ts" />
 /// <reference path="List/models/PagedList.ts" />
 /// <reference path="List/models/OrderOptionsField.ts" />
 /// <reference path="List/models/OrderOptions.ts" />

@@ -2,5 +2,5 @@
 
     export var angularModuleName = "NovaBurst.ModularTypeScript.AppX.Sales";
 
-    angular.module(angularModuleName, []);
+    angular.module(angularModuleName, [ NovaBurst.ModularTypeScript.Core.angularModuleName ]);
 } 

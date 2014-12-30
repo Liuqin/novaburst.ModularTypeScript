@@ -7,83 +7,117 @@
          */
         constructor(
             public $q: ng.IQService,
-            public $http: ng.IHttpService,
-            public url: string) {
+            public $http: ng.IHttpService) {
         }
 
-        // get person by ID
-        public getById(id: string): ng.IPromise<TEntity> {
+        // get by ID
+        public getById(url: string, id: string): ng.IPromise<TEntity> {
             var ctx = this;
             var url = url + '/' + id;
             var promise = ctx.$http.get(url);
+            return ctx.httpPromiseToPromise(promise);
+        }
+
+        // GET - may yield multiple result types
+        public get(url: string, listOptions: Core.ListOptions): ng.IPromise<any> {
+            var ctx = this;
+            var promise = ctx.getFiltered<any>(url, null, listOptions);
             return promise;
         }
 
         // GET - may yield multiple result types
-        public get(listOptions: Core.ListOptions): ng.IPromise<any> {
+        public getFiltered<TFilter>(url: string, filter: TFilter, listOptions: Core.ListOptions): ng.IPromise<any> {
             var ctx = this;
-            var promise = ctx.getFiltered<any>(null, listOptions);
-            return promise;
-        }
-
-        // GET - may yield multiple result types
-        public getFiltered<TFilter>(filter: TFilter, listOptions: Core.ListOptions): ng.IPromise<any> {
-            var ctx = this;
-            var url = this.url;
-            var paramsObj = !filter ? listOptions : $.extend(true, {}, listOptions, filter);
+            var paramsObj = !filter ? { listOptions: listOptions } : $.extend(true, {}, { listOptions: listOptions }, filter);
             var params = $.param(paramsObj);
-            url = url + params;
+            url = url + '?' + params;
             var promise = ctx.$http.get(url);
-            return promise;
+            return ctx.httpPromiseToPromise(promise);
         }
 
-        // get persons count
-        public getCount(): ng.IPromise<number> {
+        // get count
+        public getCount(url: string): ng.IPromise<number> {
             var ctx = this;
-            var promise = ctx.getCountFiltered<any>(null);
+            var promise = ctx.getCountFiltered<any>(url, null);
             return promise;
         }
 
-        // get persons count
-        public getCountFiltered<TFilter>(filter: TFilter): ng.IPromise<number> {
+        // get count
+        public getCountFiltered<TFilter>(url: string, filter: TFilter): ng.IPromise<number> {
             var ctx = this;
             var listOptions = new Core.ListOptions();
             listOptions.fetchCount = true;
-            var promise = ctx.getFiltered<TFilter>(filter, listOptions);
+            var promise = ctx.getFiltered<TFilter>(url, filter, listOptions);
             return promise;
         }
 
-        // get persons
-        public getList(pagingOptions: Core.PagingOptions, orderOptions: Core.OrderOptions): ng.IPromise<TEntity[]> {
+        // get list
+        public getList(url: string, pagingOptions: Core.PagingOptions, orderOptions: Core.OrderOptions): ng.IPromise<TEntity[]> {
             var ctx = this;
-            var promise = ctx.getListFiltered<any>(null, pagingOptions, orderOptions);
+            var promise = ctx.getListFiltered<any>(url, null, pagingOptions, orderOptions);
             return promise;
         }
 
-        // get persons
-        public getListFiltered<TFilter>(filter: TFilter, pagingOptions: Core.PagingOptions, orderOptions: Core.OrderOptions): ng.IPromise<TEntity[]> {
+        // get list
+        public getListFiltered<TFilter>(url: string, filter: TFilter, pagingOptions: Core.PagingOptions, orderOptions: Core.OrderOptions): ng.IPromise<TEntity[]> {
             var ctx = this;
             var listOptions = new Core.ListOptions();
             listOptions.pagingOptions = pagingOptions;
             listOptions.orderOptions = orderOptions;
-            var promise = ctx.getFiltered(filter, listOptions);
+            var promise = ctx.getFiltered(url, filter, listOptions);
             return promise;
         }
 
-        // get paged list of persons
-        public getPagedList<TFilter>(filter: TFilter, pagingOptions: Core.PagingOptions, orderOptions: Core.OrderOptions): ng.IPromise<Core.PagedList<TEntity>> {
+        // get paged list
+        public getPagedList(url: string, pagingOptions: Core.PagingOptions, orderOptions: Core.OrderOptions): ng.IPromise<Core.PagedList<TEntity>> {
             var ctx = this;
 
             // get count
-            var countPromise = ctx.getCountFiltered(filter);
+            var countPromise = ctx.getCount(url);
 
             // get list
-            var listPromise = ctx.getListFiltered(filter, pagingOptions, orderOptions);
+            var listPromise = ctx.getList(url, pagingOptions, orderOptions);
 
             // create paged list from promise results
             var pagedListPromise = PagedList.fromPromises(ctx.$q, countPromise, listPromise, pagingOptions);
 
             return pagedListPromise;
         }
+
+        // get paged list
+        public getPagedListFiltered<TFilter>(url: string, filter: TFilter, pagingOptions: Core.PagingOptions, orderOptions: Core.OrderOptions): ng.IPromise<Core.PagedList<TEntity>> {
+            var ctx = this;
+
+            // get count
+            var countPromise = ctx.getCountFiltered(url, filter);
+
+            // get list
+            var listPromise = ctx.getListFiltered(url, filter, pagingOptions, orderOptions);
+
+            // create paged list from promise results
+            var pagedListPromise = PagedList.fromPromises(ctx.$q, countPromise, listPromise, pagingOptions);
+
+            return pagedListPromise;
+        }
+
+        private httpPromiseToPromise(promise: ng.IHttpPromise<any>): ng.IPromise<any> {
+            var def = this.$q.defer();
+
+            promise.then(
+                // success
+                function (res) {
+                    def.resolve(res.data);
+                },
+                // error
+                function () {
+                    def.reject.apply(def, arguments);
+                });
+
+            return def.promise;
+        }
     }
-} 
+
+
+    // register angular service
+    angular.module(angularModuleName).service('EntityService', EntityService);
+}

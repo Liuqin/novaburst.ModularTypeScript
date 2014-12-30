@@ -1,4 +1,5 @@
 tsc --module AMD --sourcemap --out module.js ^
+module.angular.ts ^
 List/models/PagingOptions.ts ^
 List/models/PagedList.ts ^
 List/models/OrderOptionsField.ts ^

@@ -1,0 +1,16 @@
+﻿<h3>Products.html and ProductController</h3>
+<br />
+<h4>Please visit also <a ng-click="sales.goToCustomer();" style="cursor: pointer;">Customer.html and CustomerController</a>.</h4>
+<br />
+<br />
+
+<table class="table table-striped">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+    </tr>
+    <tr ng-repeat="product in sales.products.items">
+        <td>{{ product.id }}</td>
+        <td>{{ product.name }}</td>
+    </tr>
+</table>

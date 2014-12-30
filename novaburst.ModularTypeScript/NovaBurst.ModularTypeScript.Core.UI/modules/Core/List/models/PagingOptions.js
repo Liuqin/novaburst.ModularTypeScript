@@ -10,10 +10,26 @@
                 };
 
                 PagingOptions.prototype.getPageIndex = function () {
-                    if (!this.take)
+                    if (!this.take || this.skip == null || typeof (this.skip) == 'undefined')
                         return 1;
 
                     return Math.floor(this.skip / this.take) + 1;
+                };
+
+                PagingOptions.prototype.setSkip = function (skip) {
+                    this.skip = skip;
+                    return this;
+                };
+
+                PagingOptions.prototype.setTake = function (take) {
+                    this.take = take;
+                    return this;
+                };
+
+                PagingOptions.prototype.setPage = function (pageIndex, pageSize) {
+                    this.take = pageSize;
+                    this.skip = (pageIndex - 1) * pageSize;
+                    return this;
                 };
                 return PagingOptions;
             })();

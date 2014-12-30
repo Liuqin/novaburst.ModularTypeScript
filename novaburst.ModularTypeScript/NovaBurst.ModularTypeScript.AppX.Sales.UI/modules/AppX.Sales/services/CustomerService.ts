@@ -2,13 +2,17 @@
 
     import Core = NovaBurst.ModularTypeScript.Core;
 
-    export class CustomerService extends Core.EntityService<Customer> implements ICustomerService {
+    export class CustomerService implements ICustomerService {
+
+        private url: string = "/api/customer";
 
         constructor(
-            public $q: ng.IQService,
-            public $http: ng.IHttpService) {
+            private EntityService: Core.IEntityService<Customer>) {
+        }
 
-            super($q, $http, '/api/customer');
+        // get by ID
+        getById(id: string): ng.IPromise<Customer> {
+            return this.EntityService.getById(this.url, id);
         }
     }
 
