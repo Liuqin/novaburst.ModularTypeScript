@@ -1,13 +1,12 @@
-﻿var NovaBurst;
+var NovaBurst;
 (function (NovaBurst) {
+    var ModularTypeScript;
     (function (ModularTypeScript) {
+        var Core;
         (function (Core) {
             Core.angularModuleName = 'NovaBurst.ModularTypeScript.Core';
-
             angular.module(Core.angularModuleName, []);
-        })(ModularTypeScript.Core || (ModularTypeScript.Core = {}));
-        var Core = ModularTypeScript.Core;
-    })(NovaBurst.ModularTypeScript || (NovaBurst.ModularTypeScript = {}));
-    var ModularTypeScript = NovaBurst.ModularTypeScript;
+        })(Core = ModularTypeScript.Core || (ModularTypeScript.Core = {}));
+    })(ModularTypeScript = NovaBurst.ModularTypeScript || (NovaBurst.ModularTypeScript = {}));
 })(NovaBurst || (NovaBurst = {}));
 //# sourceMappingURL=module.angular.js.map

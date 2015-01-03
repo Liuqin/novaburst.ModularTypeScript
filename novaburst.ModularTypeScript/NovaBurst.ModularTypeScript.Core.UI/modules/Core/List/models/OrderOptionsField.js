@@ -1,6 +1,8 @@
-﻿var NovaBurst;
+var NovaBurst;
 (function (NovaBurst) {
+    var ModularTypeScript;
     (function (ModularTypeScript) {
+        var Core;
         (function (Core) {
             var OrderOptionsField = (function () {
                 function OrderOptionsField() {
@@ -8,9 +10,7 @@
                 return OrderOptionsField;
             })();
             Core.OrderOptionsField = OrderOptionsField;
-        })(ModularTypeScript.Core || (ModularTypeScript.Core = {}));
-        var Core = ModularTypeScript.Core;
-    })(NovaBurst.ModularTypeScript || (NovaBurst.ModularTypeScript = {}));
-    var ModularTypeScript = NovaBurst.ModularTypeScript;
+        })(Core = ModularTypeScript.Core || (ModularTypeScript.Core = {}));
+    })(ModularTypeScript = NovaBurst.ModularTypeScript || (NovaBurst.ModularTypeScript = {}));
 })(NovaBurst || (NovaBurst = {}));
 //# sourceMappingURL=OrderOptionsField.js.map
