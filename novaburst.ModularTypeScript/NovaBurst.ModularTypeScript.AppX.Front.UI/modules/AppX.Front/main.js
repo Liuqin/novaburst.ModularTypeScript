@@ -1,20 +1,20 @@
-﻿/// <reference path="../../../NovaBurst.ModularTypeScript.Core.UI/scripts/typings/requirejs/require.d.ts" />
+/// <reference path="../../../NovaBurst.ModularTypeScript.Core.UI/scripts/typings/requirejs/require.d.ts" />
+// main entry point
 var NovaBurst;
 (function (NovaBurst) {
+    var ModularTypeScript;
     (function (ModularTypeScript) {
+        var AppX;
         (function (AppX) {
-            // main entry point
+            var Front;
             (function (Front) {
                 // set debug or release mode - depending on debug query string param
                 window['isDebugMode'] = new RegExp('(\\?|(\\?.*&))debug(|&|=)').exec(document.URL) ? true : false;
-
                 // RequireJS shim config
                 var shimConfig = {
                     'scripts/bootstrap': ['scripts/jquery'],
-                    'scripts/angular-route': ['scripts/angular'],
-                    'scripts/purl': ['scripts/jquery']
+                    'scripts/angular-route': ['scripts/angular']
                 };
-
                 // configure requireJS differently for debug and release modes
                 if (window['isDebugMode']) {
                     require.config({
@@ -23,7 +23,8 @@ var NovaBurst;
                             'scripts/jquery': 'scripts/jquery-2.1.1'
                         }
                     });
-                } else {
+                }
+                else {
                     require.config({
                         shim: shimConfig,
                         paths: {
@@ -34,16 +35,16 @@ var NovaBurst;
                         }
                     });
                 }
-
                 // load startup modules
-                require(['modules/Core/Module/moduleLoader!AppX.Front'], function () {
-                }, function () {
+                require(['modules/Core/Module/moduleLoader!AppX.Front'], 
+                // success
+                function () {
+                }, 
+                // error
+                function () {
                 });
-            })(AppX.Front || (AppX.Front = {}));
-            var Front = AppX.Front;
-        })(ModularTypeScript.AppX || (ModularTypeScript.AppX = {}));
-        var AppX = ModularTypeScript.AppX;
-    })(NovaBurst.ModularTypeScript || (NovaBurst.ModularTypeScript = {}));
-    var ModularTypeScript = NovaBurst.ModularTypeScript;
+            })(Front = AppX.Front || (AppX.Front = {}));
+        })(AppX = ModularTypeScript.AppX || (ModularTypeScript.AppX = {}));
+    })(ModularTypeScript = NovaBurst.ModularTypeScript || (NovaBurst.ModularTypeScript = {}));
 })(NovaBurst || (NovaBurst = {}));
 //# sourceMappingURL=main.js.map

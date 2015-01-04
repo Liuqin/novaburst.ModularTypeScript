@@ -10,12 +10,6 @@
 
             $scope['front'] = this;
         }
-
-
-        // go to customer account
-        public goToAccount(): void {
-            this.$location.url('/account');
-        }
     }
 
 

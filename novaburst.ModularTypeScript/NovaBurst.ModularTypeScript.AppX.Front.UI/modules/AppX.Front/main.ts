@@ -11,8 +11,7 @@ module NovaBurst.ModularTypeScript.AppX.Front {
     var shimConfig: any =
         {
             'scripts/bootstrap': ['scripts/jquery'],
-            'scripts/angular-route': ['scripts/angular'],
-            'scripts/purl': ['scripts/jquery']
+            'scripts/angular-route': ['scripts/angular']
         };
 
     // configure requireJS differently for debug and release modes

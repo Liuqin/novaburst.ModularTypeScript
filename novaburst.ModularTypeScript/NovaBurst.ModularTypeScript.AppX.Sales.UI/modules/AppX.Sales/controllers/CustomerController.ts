@@ -9,9 +9,9 @@
          * Inject CustomerService to handle customer related operations.
          */
         constructor(
-            public $scope: ng.IScope,
-            public $location: ng.ILocationService,
-            public CustomerService: ICustomerService) {
+            protected $scope: ng.IScope,
+            protected $location: ng.ILocationService,
+            protected CustomerService: ICustomerService) {
 
             super($scope, $location);
 
@@ -29,7 +29,9 @@
             var customerPromise = ctx.CustomerService.getById("123");
 
             customerPromise.then(function (customer) {
-                ctx.currentCustomer = customer;
+                ctx.$scope.$applyAsync(function () {
+                    ctx.currentCustomer = customer;
+                });
             });
 
             return customerPromise;

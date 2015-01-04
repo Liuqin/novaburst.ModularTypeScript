@@ -1,7 +1,10 @@
-﻿var NovaBurst;
+var NovaBurst;
 (function (NovaBurst) {
+    var ModularTypeScript;
     (function (ModularTypeScript) {
+        var AppX;
         (function (AppX) {
+            var Sales;
             (function (Sales) {
                 var CustomerService = (function () {
                     function CustomerService(EntityService) {
@@ -15,14 +18,10 @@
                     return CustomerService;
                 })();
                 Sales.CustomerService = CustomerService;
-
                 // register angular service
                 angular.module(Sales.angularModuleName).service('CustomerService', ['EntityService', CustomerService]);
-            })(AppX.Sales || (AppX.Sales = {}));
-            var Sales = AppX.Sales;
-        })(ModularTypeScript.AppX || (ModularTypeScript.AppX = {}));
-        var AppX = ModularTypeScript.AppX;
-    })(NovaBurst.ModularTypeScript || (NovaBurst.ModularTypeScript = {}));
-    var ModularTypeScript = NovaBurst.ModularTypeScript;
+            })(Sales = AppX.Sales || (AppX.Sales = {}));
+        })(AppX = ModularTypeScript.AppX || (ModularTypeScript.AppX = {}));
+    })(ModularTypeScript = NovaBurst.ModularTypeScript || (NovaBurst.ModularTypeScript = {}));
 })(NovaBurst || (NovaBurst = {}));
 //# sourceMappingURL=CustomerService.js.map

@@ -2,7 +2,7 @@
 
     import Core = NovaBurst.ModularTypeScript.Core;
 
-    export class ProductService {
+    export class ProductService implements IProductService {
 
         private url: string = "/api/product";
 

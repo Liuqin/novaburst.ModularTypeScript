@@ -1,7 +1,10 @@
-﻿var NovaBurst;
+var NovaBurst;
 (function (NovaBurst) {
+    var ModularTypeScript;
     (function (ModularTypeScript) {
+        var AppX;
         (function (AppX) {
+            var Sales;
             (function (Sales) {
                 // base controller for all sales controllers
                 var SalesControllerBase = (function () {
@@ -14,18 +17,14 @@
                     SalesControllerBase.prototype.goToCustomer = function () {
                         this.$location.url('/account');
                     };
-
                     SalesControllerBase.prototype.goToProducts = function () {
                         this.$location.url('/');
                     };
                     return SalesControllerBase;
                 })();
                 Sales.SalesControllerBase = SalesControllerBase;
-            })(AppX.Sales || (AppX.Sales = {}));
-            var Sales = AppX.Sales;
-        })(ModularTypeScript.AppX || (ModularTypeScript.AppX = {}));
-        var AppX = ModularTypeScript.AppX;
-    })(NovaBurst.ModularTypeScript || (NovaBurst.ModularTypeScript = {}));
-    var ModularTypeScript = NovaBurst.ModularTypeScript;
+            })(Sales = AppX.Sales || (AppX.Sales = {}));
+        })(AppX = ModularTypeScript.AppX || (ModularTypeScript.AppX = {}));
+    })(ModularTypeScript = NovaBurst.ModularTypeScript || (NovaBurst.ModularTypeScript = {}));
 })(NovaBurst || (NovaBurst = {}));
 //# sourceMappingURL=SalesControllerBase.js.map

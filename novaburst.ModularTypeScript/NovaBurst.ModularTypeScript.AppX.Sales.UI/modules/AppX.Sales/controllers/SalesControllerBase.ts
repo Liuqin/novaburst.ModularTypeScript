@@ -4,8 +4,8 @@
     export class SalesControllerBase {
 
         constructor(
-            public $scope: ng.IScope,
-            public $location: ng.ILocationService) {
+            protected $scope: ng.IScope,
+            protected $location: ng.ILocationService) {
 
             $scope['sales'] = this;
         }

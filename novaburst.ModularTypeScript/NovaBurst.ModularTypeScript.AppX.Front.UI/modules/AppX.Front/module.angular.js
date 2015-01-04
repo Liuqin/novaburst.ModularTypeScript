@@ -1,19 +1,19 @@
-﻿var NovaBurst;
+var NovaBurst;
 (function (NovaBurst) {
+    var ModularTypeScript;
     (function (ModularTypeScript) {
+        var AppX;
         (function (AppX) {
+            var Front;
             (function (Front) {
                 Front.angularModuleName = 'NovaBurst.ModularTypeScript.AppX.Front';
-
                 var angularModule = angular.module(Front.angularModuleName, [
                     'ngRoute',
                     NovaBurst.ModularTypeScript.AppX.Sales.angularModuleName
-                ]).config([
-                    '$routeProvider', function ($routeProvider) {
-                        // configure router
-                        configureRouter($routeProvider);
-                    }]);
-
+                ]).config(['$routeProvider', function ($routeProvider) {
+                    // configure router
+                    configureRouter($routeProvider);
+                }]);
                 // configure router
                 function configureRouter($routeProvider) {
                     $routeProvider.when('/account', {
@@ -24,11 +24,8 @@
                         controller: 'ProductController'
                     });
                 }
-            })(AppX.Front || (AppX.Front = {}));
-            var Front = AppX.Front;
-        })(ModularTypeScript.AppX || (ModularTypeScript.AppX = {}));
-        var AppX = ModularTypeScript.AppX;
-    })(NovaBurst.ModularTypeScript || (NovaBurst.ModularTypeScript = {}));
-    var ModularTypeScript = NovaBurst.ModularTypeScript;
+            })(Front = AppX.Front || (AppX.Front = {}));
+        })(AppX = ModularTypeScript.AppX || (ModularTypeScript.AppX = {}));
+    })(ModularTypeScript = NovaBurst.ModularTypeScript || (NovaBurst.ModularTypeScript = {}));
 })(NovaBurst || (NovaBurst = {}));
 //# sourceMappingURL=module.angular.js.map

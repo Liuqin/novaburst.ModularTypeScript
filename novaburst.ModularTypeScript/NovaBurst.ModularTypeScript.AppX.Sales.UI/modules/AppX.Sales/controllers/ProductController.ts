@@ -7,9 +7,9 @@
         public products: Core.PagedList<Product>;
 
         constructor(
-            public $scope: ng.IScope,
-            public $location: ng.ILocationService,
-            private ProductService: IProductService) {
+            protected $scope: ng.IScope,
+            protected $location: ng.ILocationService,
+            protected ProductService: IProductService) {
 
             super($scope, $location);
 
@@ -41,7 +41,9 @@
             var prodPromise = ctx.ProductService.getPagedList(pagingOptions, orderOptions);
 
             prodPromise.then(function (products) {
-                ctx.products = products;
+                ctx.$scope.$applyAsync(function () {
+                    ctx.products = products;
+                });
             });
 
             return prodPromise;

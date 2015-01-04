@@ -1,17 +1,17 @@
-﻿var NovaBurst;
+var NovaBurst;
 (function (NovaBurst) {
+    var ModularTypeScript;
     (function (ModularTypeScript) {
+        var AppX;
         (function (AppX) {
+            var Front;
             (function (Front) {
                 // start angular app
                 angular.element(document).ready(function () {
                     angular.bootstrap(document, [Front.angularModuleName]);
                 });
-            })(AppX.Front || (AppX.Front = {}));
-            var Front = AppX.Front;
-        })(ModularTypeScript.AppX || (ModularTypeScript.AppX = {}));
-        var AppX = ModularTypeScript.AppX;
-    })(NovaBurst.ModularTypeScript || (NovaBurst.ModularTypeScript = {}));
-    var ModularTypeScript = NovaBurst.ModularTypeScript;
+            })(Front = AppX.Front || (AppX.Front = {}));
+        })(AppX = ModularTypeScript.AppX || (ModularTypeScript.AppX = {}));
+    })(ModularTypeScript = NovaBurst.ModularTypeScript || (NovaBurst.ModularTypeScript = {}));
 })(NovaBurst || (NovaBurst = {}));
 //# sourceMappingURL=module.angular.bootstrap.js.map
