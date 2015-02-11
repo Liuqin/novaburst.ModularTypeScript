@@ -158,6 +158,8 @@ export class ModuleBundling {
             // get group by name
             var group = groups[groupName];
 
+            var formattedOutPath = ctx.formatStringUsingGroupNames(bundle.out, group.patternGroups);
+
             // create bundle map
             var map: IModuleBundleMap =
                 {
@@ -165,7 +167,7 @@ export class ModuleBundling {
                     groupName: groupName,
                     patternGroups: group.patternGroups,
                     files: group.files,
-                    out: bundle.out
+                    out: formattedOutPath
                 };
 
             // add map to collection
@@ -173,6 +175,20 @@ export class ModuleBundling {
         }
 
         return maps;
+    }
+
+    private formatStringUsingGroupNames(input: string, patternGroups: string[]): string {
+        var ctx = this;
+
+        if (!input || !patternGroups || patternGroups.length == 0) {
+            return input;
+        }
+
+        patternGroups.forEach((patternGroup, index) => {
+            input = input.replace('{{' + index + '}}', patternGroup);
+        });
+
+        return input;
     }
 
     private addBundleMapFilesToGroup(groups: any, match: RegExpExecArray, absScriptPath: string, modDef: IModuleDefinition, bundleFile: IModuleBundleFile) {

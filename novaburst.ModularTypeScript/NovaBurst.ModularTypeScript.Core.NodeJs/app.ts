@@ -13,7 +13,7 @@ var bundling = new modBundling.ModuleBundling(
                 [
                     { pattern: '([^\\\\]+)\\\\module.json$', moduleFilesPattern: 'module.angular.js$', moduleFilesPatternReverse: true }
                 ],
-                out: 'module.min.json'
+                out: '\\module.min\\{{0}}.module.min.json'
             },
 
             // group all angular init scripts into a single file
@@ -22,7 +22,7 @@ var bundling = new modBundling.ModuleBundling(
                 [
                     { pattern: 'module.angular.js$' }
                 ],
-                out: 'module.angular.min.js'
+                out: '\\module.min\\module.angular.min.js'
             }
         ]
     });

@@ -16,7 +16,7 @@
             "modules\\AppX.Core\\models\\PersonPhone",
             "modules\\AppX.Core\\models\\PersonPhoneType"
         ],
-        "physicalOutPath": "",
+        "physicalOutPath": "\\module.min\\AppX.Core.module.min.json",
         "relativeOutPath": null
     },
     {
@@ -28,7 +28,7 @@
             "modules\\AppX.Front\\controllers\\FrontController",
             "modules\\AppX.Front\\module.angular.bootstrap"
         ],
-        "physicalOutPath": "",
+        "physicalOutPath": "\\module.min\\AppX.Front.module.min.json",
         "relativeOutPath": null
     },
     {
@@ -54,7 +54,7 @@
             "modules\\AppX.Sales\\controllers\\CustomerController",
             "modules\\AppX.Sales\\controllers\\ProductController"
         ],
-        "physicalOutPath": "",
+        "physicalOutPath": "\\module.min\\AppX.Sales.module.min.json",
         "relativeOutPath": null
     },
     {
@@ -76,7 +76,7 @@
             "modules\\Core\\Model\\interfaces\\IEntityService",
             "modules\\Core\\Model\\services\\EntityService"
         ],
-        "physicalOutPath": "",
+        "physicalOutPath": "\\module.min\\Core.module.min.json",
         "relativeOutPath": null
     },
     {
@@ -90,7 +90,7 @@
             "modules\\AppX.Sales\\module.angular",
             "modules\\Core\\module.angular"
         ],
-        "physicalOutPath": "",
+        "physicalOutPath": "\\module.min\\module.angular.min.js",
         "relativeOutPath": null
     }
 ]
