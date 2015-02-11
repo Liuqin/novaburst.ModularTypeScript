@@ -1,0 +1,13 @@
+{
+  "name": "NovaBurst.ModularTypeScript.Core.NodeJs",
+  "version": "0.0.0",
+  "description": "NovaBurst.ModularTypeScript.Core.NodeJs",
+  "main": "app.js",
+  "author": {
+    "name": "Andrei",
+    "email": ""
+  },
+  "dependencies": {
+    "typescript": "^1.4.1"
+  }
+}
