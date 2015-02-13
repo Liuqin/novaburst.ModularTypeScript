@@ -31,15 +31,8 @@ var bundling = new modBundling.ModuleBundling(
 
 var path = require('path');
 
-var map = bundling.writeBundleMapsJson(path.join(__dirname, 'bundle.json'), physicalFilePath => {
+var map = bundling.writeBundleMapsJson(path.join(__dirname, 'bundle.json'));
 
-    var match = /\\(modules\\.+)\.js$/i.exec(physicalFilePath);
 
-    if (match) {
-        return match[1];
-    }
-    else {
-        console.log('Could not create relative path for: \'' + physicalFilePath + '\'');
-        return null;
-    }
-});
+//var modDir = new modBundling.ModuleDirectory(__dirname + '/../');
+//var x = 1;
