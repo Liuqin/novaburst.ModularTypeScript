@@ -1,5 +1,8 @@
 [
     {
+        "modules": [
+            "modules/AppX.Core/module.json"
+        ],
         "physicalFilePaths": [
             "H:\\_GITHUB\\novaburst.ModularTypeScript\\novaburst.ModularTypeScript\\NovaBurst.ModularTypeScript.AppX.Core.UI\\modules\\AppX.Core\\models\\Address.js",
             "H:\\_GITHUB\\novaburst.ModularTypeScript\\novaburst.ModularTypeScript\\NovaBurst.ModularTypeScript.AppX.Core.UI\\modules\\AppX.Core\\models\\Phone.js",
@@ -16,10 +19,13 @@
             "modules/appx.core/models/personphone",
             "modules/appx.core/models/personphonetype"
         ],
-        "physicalOutPath": "\\module.min\\AppX.Core.module.min.json",
-        "relativeOutPath": null
+        "physicalOutPath": "H:\\_GITHUB\\novaburst.ModularTypeScript\\novaburst.ModularTypeScript\\NovaBurst.ModularTypeScript.AppX.Front.UI\\modules\\bundles\\AppX.Core.module.min.js",
+        "relativeOutPath": "modules/bundles/appx.core.module.min"
     },
     {
+        "modules": [
+            "modules/AppX.Front/module.json"
+        ],
         "physicalFilePaths": [
             "H:\\_GITHUB\\novaburst.ModularTypeScript\\novaburst.ModularTypeScript\\NovaBurst.ModularTypeScript.AppX.Front.UI\\modules\\AppX.Front\\controllers\\FrontController.js",
             "H:\\_GITHUB\\novaburst.ModularTypeScript\\novaburst.ModularTypeScript\\NovaBurst.ModularTypeScript.AppX.Front.UI\\modules\\AppX.Front\\module.angular.bootstrap.js"
@@ -28,10 +34,13 @@
             "modules/appx.front/controllers/frontcontroller",
             "modules/appx.front/module.angular.bootstrap"
         ],
-        "physicalOutPath": "\\module.min\\AppX.Front.module.min.json",
-        "relativeOutPath": null
+        "physicalOutPath": "H:\\_GITHUB\\novaburst.ModularTypeScript\\novaburst.ModularTypeScript\\NovaBurst.ModularTypeScript.AppX.Front.UI\\modules\\bundles\\AppX.Front.module.min.js",
+        "relativeOutPath": "modules/bundles/appx.front.module.min"
     },
     {
+        "modules": [
+            "modules/AppX.Sales/module.json"
+        ],
         "physicalFilePaths": [
             "H:\\_GITHUB\\novaburst.ModularTypeScript\\novaburst.ModularTypeScript\\NovaBurst.ModularTypeScript.AppX.Sales.UI\\modules\\AppX.Sales\\models\\Customer.js",
             "H:\\_GITHUB\\novaburst.ModularTypeScript\\novaburst.ModularTypeScript\\NovaBurst.ModularTypeScript.AppX.Sales.UI\\modules\\AppX.Sales\\models\\Product.js",
@@ -54,10 +63,13 @@
             "modules/appx.sales/controllers/customercontroller",
             "modules/appx.sales/controllers/productcontroller"
         ],
-        "physicalOutPath": "\\module.min\\AppX.Sales.module.min.json",
-        "relativeOutPath": null
+        "physicalOutPath": "H:\\_GITHUB\\novaburst.ModularTypeScript\\novaburst.ModularTypeScript\\NovaBurst.ModularTypeScript.AppX.Front.UI\\modules\\bundles\\AppX.Sales.module.min.js",
+        "relativeOutPath": "modules/bundles/appx.sales.module.min"
     },
     {
+        "modules": [
+            "modules/Core/module.json"
+        ],
         "physicalFilePaths": [
             "H:\\_GITHUB\\novaburst.ModularTypeScript\\novaburst.ModularTypeScript\\NovaBurst.ModularTypeScript.Core.UI\\modules\\Core\\List\\models\\PagingOptions.js",
             "H:\\_GITHUB\\novaburst.ModularTypeScript\\novaburst.ModularTypeScript\\NovaBurst.ModularTypeScript.Core.UI\\modules\\Core\\List\\models\\PagedList.js",
@@ -76,10 +88,15 @@
             "modules/core/model/interfaces/ientityservice",
             "modules/core/model/services/entityservice"
         ],
-        "physicalOutPath": "\\module.min\\Core.module.min.json",
-        "relativeOutPath": null
+        "physicalOutPath": "H:\\_GITHUB\\novaburst.ModularTypeScript\\novaburst.ModularTypeScript\\NovaBurst.ModularTypeScript.AppX.Front.UI\\modules\\bundles\\Core.module.min.js",
+        "relativeOutPath": "modules/bundles/core.module.min"
     },
     {
+        "modules": [
+            "modules/Core/module.json",
+            "modules/AppX.Sales/module.json",
+            "modules/AppX.Front/module.json"
+        ],
         "physicalFilePaths": [
             "H:\\_GITHUB\\novaburst.ModularTypeScript\\novaburst.ModularTypeScript\\NovaBurst.ModularTypeScript.Core.UI\\modules\\Core\\module.angular.js",
             "H:\\_GITHUB\\novaburst.ModularTypeScript\\novaburst.ModularTypeScript\\NovaBurst.ModularTypeScript.AppX.Sales.UI\\modules\\AppX.Sales\\module.angular.js",
@@ -90,7 +107,7 @@
             "modules/appx.sales/module.angular",
             "modules/appx.front/module.angular"
         ],
-        "physicalOutPath": "\\module.min\\module.angular.min.js",
-        "relativeOutPath": null
+        "physicalOutPath": "H:\\_GITHUB\\novaburst.ModularTypeScript\\novaburst.ModularTypeScript\\NovaBurst.ModularTypeScript.AppX.Front.UI\\modules\\bundles\\module.angular.min.js",
+        "relativeOutPath": "modules/bundles/module.angular.min"
     }
 ]

@@ -9,5 +9,8 @@
   },
   "dependencies": {
     "typescript": "^1.4.1"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5"
   }
 }

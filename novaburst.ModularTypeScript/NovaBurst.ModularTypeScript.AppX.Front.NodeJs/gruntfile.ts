@@ -1,5 +1,6 @@
 ﻿
-import moduleUtils = require('./modules/ModuleUtils/ModuleUtils');
+import moduleUtils = require('../novaburst.ModularTypeScript.Core.NodeJs/modules/ModuleUtils/ModuleUtils');
+
 
 // create bundling utility
 var bundling = new moduleUtils.ModuleBundling(
@@ -14,7 +15,7 @@ var bundling = new moduleUtils.ModuleBundling(
                 [
                     { pattern: '([^\\\\]+)\\\\module.json$', moduleFilesPattern: 'module.angular.js$', moduleFilesPatternReverse: true }
                 ],
-                out: 'NovaBurst.ModularTypeScript.AppX.Front.UI\\modules\\bundles\\{{0}}.min.js'
+                out: 'NovaBurst.ModularTypeScript.AppX.Front.UI\\modules\\bundles\\{{0}}.module.min.js'
             },
 
             // group all angular init scripts into a single file
@@ -37,11 +38,23 @@ var uglifyConfig =
             sourceMap: true,
             banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' + '<%= grunt.template.today("yyyy-mm-dd HH:mm:ss") %> */\n'
         },
-        build: bundling.createGruntUglifyFilesConfig(__dirname)
+        build: bundling.createGruntUglifyFilesConfig()
     };
 
-var x = 1;
 
 
-//var modDir = new modBundling.ModuleDirectory(__dirname + '/../');
-//var x = 1;
+export = gruntFunc;
+var gruntFunc = (grunt: IGrunt) => {
+
+    grunt.initConfig(
+        {
+            pkg: grunt.file.readJSON('package.json'),
+
+            uglify: uglifyConfig
+        });
+
+
+    grunt.loadNpmTasks('grunt-contrib-uglify');
+
+    grunt.registerTask('default', ['uglify']);
+} 

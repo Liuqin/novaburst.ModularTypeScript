@@ -1,13 +1,11 @@
-﻿///<reference path="../../Scripts/typings/node/node.d.ts" />
-
-import fs = require('fs');
+﻿import fs = require('fs');
 import path = require('path');
 
 
 export class ModuleBundling {
 
     // associated module directory
-    private moduleDirectory: ModuleDirectory;
+    public moduleDirectory: ModuleDirectory;
 
     // bundle maps (bundles and the associated files)
     private moduleBundleMaps: IModuleBundleMap[];
@@ -25,11 +23,52 @@ export class ModuleBundling {
     }
 
 
-    public writeBundleMapsJson(destFilePath: string) {
+    /*
+     * Create Grunt-Uglify config.
+     * name: config bundle name
+     * uglifyConfig: an existing Uglify config to extend.
+     */
+    public createGruntUglifyFilesConfig(relativeToPath: string): any {
+        var ctx = this;
+
+        var config = {};
+
+        // get bundling spec
+        var bundleMaps = ctx.getBundleMaps();
+
+        if (bundleMaps && bundleMaps.length > 0) {
+
+            bundleMaps.forEach((bundleMap, bundleMapIndex) => {
+
+                if (bundleMap.files && bundleMap.files.length > 0) {
+
+                    var bundleFiles = [];
+
+                    bundleMap.files.forEach(file => {
+
+                        // create relative path
+                        var fileRelativePath = path.relative(relativeToPath, file.path).replace(/\\/g, '/');
+
+                        bundleFiles.push(fileRelativePath);
+                    });
+
+                    // create out relative path
+                    var outRelativePath = path.relative(relativeToPath, bundleMap.out).replace(/\\/g, '/');
+
+                    // set bundle specs
+                    config[outRelativePath] = bundleFiles;
+                }
+            });
+        }
+
+        return config;
+    }
+
+    public writeBundleMapsJson(destFilePath: string, includePhysicalPaths: boolean) {
         var ctx = this;
 
         // get bundle maps
-        var maps = ctx.getBundleMapsExports();
+        var maps = ctx.getBundleMapsExports(includePhysicalPaths);
 
         // stringify
         var mapsJson = JSON.stringify(maps, null, 4);
@@ -38,7 +77,7 @@ export class ModuleBundling {
         fs.writeFileSync(destFilePath, mapsJson);
     }
 
-    private getBundleMapsExports(): IModuleBundleMapExport[]{
+    public getBundleMapsExports(includePhysicalPaths: boolean): IModuleBundleMapExport[]{
         var ctx = this;
 
         var bundleMapsExports = [];
@@ -53,24 +92,37 @@ export class ModuleBundling {
                 var physicalFilePaths: string[] = [];
                 var relativeFilePaths: string[] = [];
 
+                // create a list of modules referenced by current bundle
+                var modulesMap = {};
+
                 if (bundleMap.files && bundleMap.files.length > 0) {
 
                     bundleMap.files.forEach(bundleMapFile => {
 
                         // create a file path relative to the desired path
-                        var relativeFilePath = bundleMapFile.relativePath;
+                        var relativeFilePath = bundleMapFile.pathRelative;
 
                         relativeFilePaths.push(relativeFilePath);
                         physicalFilePaths.push(bundleMapFile.path);
+
+                        // keep track of modules used across files
+                        modulesMap[bundleMapFile.parentModule.moduleName] = bundleMapFile.parentModule;
                     });
+                }
+
+                // create the list of modules referenced by current bundle
+                var referencedModules = [];
+                for (var prop in modulesMap) {
+                    referencedModules.push(prop);
                 }
 
                 var bundleMapExport: IModuleBundleMapExport =
                     {
-                        physicalFilePaths: physicalFilePaths,
+                        modules: referencedModules,
+                        physicalFilePaths: includePhysicalPaths ? physicalFilePaths : undefined,
                         relativeFilePaths: relativeFilePaths,
-                        physicalOutPath: bundleMap.out,
-                        relativeOutPath: ModuleDirectory.getModuleFileRelativePath(bundleMap.out)
+                        physicalOutPath: includePhysicalPaths ? bundleMap.out : undefined,
+                        relativeOutPath: bundleMap.outRelative
                     };
 
                 bundleMapsExports.push(bundleMapExport);
@@ -158,7 +210,13 @@ export class ModuleBundling {
             // get group by name
             var group = groups[groupName];
 
+            // format output path
             var formattedOutPath = ctx.formatStringUsingGroupNames(bundle.out, group.patternGroups);
+
+            // create physical path (if does not exist then is relative and will be combined with the basePath passed into options)
+            if (fs.existsSync(formattedOutPath) == false) {
+                formattedOutPath = path.normalize(path.join(ctx.options.basePath, formattedOutPath));
+            }
 
             // order bundle map files by bundle order and the order that file has within the bundle
             var orderedBundleMapFiles = ctx.orderBundleMapFiles(group.files);
@@ -170,7 +228,8 @@ export class ModuleBundling {
                     groupName: groupName,
                     patternGroups: group.patternGroups,
                     files: orderedBundleMapFiles,
-                    out: formattedOutPath
+                    out: formattedOutPath,
+                    outRelative: ModuleDirectory.getModuleFileRelativePath(formattedOutPath)
                 };
 
             // add map to collection
@@ -189,7 +248,7 @@ export class ModuleBundling {
         var map = {};
 
         bundleMapFiles.forEach(bundleMapFile => {
-            var fileOrder = ctx.moduleDirectory.getModuleDefinitionFileOrder(bundleMapFile.relativePath);
+            var fileOrder = ctx.moduleDirectory.getModuleDefinitionFileOrder(bundleMapFile.pathRelative);
             if (fileOrder) {
                 map[fileOrder] = bundleMapFile;
             }
@@ -301,7 +360,7 @@ export class ModuleBundling {
                         parentModule: modDef,
                         bundleFile: bundleFile,
                         path: filePath,
-                        relativePath: ModuleDirectory.getModuleFileRelativePath(filePath),
+                        pathRelative: ModuleDirectory.getModuleFileRelativePath(filePath),
                         isLocal: true
                     });
             }
@@ -313,7 +372,7 @@ export class ModuleBundling {
                     parentModule: modDef,
                     bundleFile: bundleFile,
                     path: filePath,
-                    relativePath: ModuleDirectory.getModuleFileRelativePath(filePath),
+                    pathRelative: ModuleDirectory.getModuleFileRelativePath(filePath),
                     isLocal: false
                 });
         }
@@ -325,7 +384,7 @@ export class ModuleBundling {
 
 export class ModuleDirectory {
 
-    public static moduleJsonPathRegex = new RegExp("modules\\\\([^\\\\]+)\\\\module\\.json$", "i");
+    public static moduleJsonPathRegex = new RegExp("modules\\\\.*([^\\\\]+)\\\\module\\.json$", "i");
     public static moduleFilePathRegex = new RegExp("(modules\\\\.+)\\.js$", "i");
 
     public moduleDefinitions: IModuleDefinition[];
@@ -363,6 +422,48 @@ export class ModuleDirectory {
 
 
     /*
+     * Writes module definitions to json
+     */
+    public writeModuleDefinitionsJson(destFilePath: string) {
+        var ctx = this;
+
+        // get module definitions exports
+        var modDefExports = ctx.getModuleDefinitionsExports();
+
+        // stringify
+        var mapsJson = JSON.stringify(modDefExports, null, 4);
+
+        // write file to path
+        fs.writeFileSync(destFilePath, mapsJson);
+    }
+
+    /*
+     * Create modules definitions exports.
+     */
+    public getModuleDefinitionsExports(): IModuleDefinitionExport[]{
+        var ctx = this;
+
+        var modDefExportLst = [];
+
+        if (ctx.moduleDefinitions && ctx.moduleDefinitions.length > 0) {
+            ctx.moduleDefinitions.forEach(modDef => {
+
+                // create export
+                var modDefExport: IModuleDefinitionExport =
+                    {
+                        moduleName: modDef.moduleName,
+                        dependencies: modDef.dependencies,
+                        scripts: modDef.scripts
+                    };
+
+                modDefExportLst.push(modDefExport);
+            });
+        }
+
+        return modDefExportLst;
+    }
+
+    /*
      * Get module definition by module name.
      */
     public getModuleDefinitionByModuleName(moduleName: string): IModuleDefinition {
@@ -386,6 +487,117 @@ export class ModuleDirectory {
 
         return fileOrder;
     }
+
+    /*
+     * Parse module tree from bottom to top.
+     */
+    public parseModuleTree(moduleDef: IModuleDefinition, moduleFunc: (moduleDef: IModuleDefinition) => void) {
+        var ctx = this;
+
+        // current module
+        moduleFunc(moduleDef);
+
+        // parse dependencies
+        if (moduleDef.parentModules && moduleDef.parentModules.length > 0) {
+            moduleDef.parentModules.forEach(parentModDef => {
+
+                ctx.parseModuleTree(parentModDef, moduleFunc);
+            });
+        }
+    }
+
+
+    public static getModuleFileRelativePath(filePath: string): string {
+        var ctx = this;
+
+        var match = ModuleDirectory.moduleFilePathRegex.exec(filePath);
+
+        if (match) {
+            return match[1].replace(/\\/g, '/').toLowerCase();
+        }
+        else {
+            return null;
+        }
+    }
+
+    // get directory files
+    public static getDirectoryFiles(dir: string, regex?: RegExp): string[] {
+        var ctx = this;
+
+        var files = [];
+
+        // get directory files
+        var dirFileNames = fs.readdirSync(dir);
+
+        if (dirFileNames && dirFileNames.length > 0) {
+            dirFileNames.forEach((fileName) => {
+
+                // create file path
+                var file = path.normalize(path.join(dir, fileName));
+
+                // get file stat
+                var stat = fs.statSync(file);
+
+                // if is directory then recursively add files else add the file to the list
+                if (stat.isDirectory()) {
+                    var dirFilesRec = ctx.getDirectoryFiles(file, regex);
+
+                    if (dirFilesRec && dirFilesRec.length) {
+                        files.push.apply(files, dirFilesRec);
+                    }
+                }
+                else {
+                    if (regex) {
+                        if (regex.exec(file)) {
+                            console.log(file);
+                            files.push(file);
+                        }
+                    }
+                    else {
+                        files.push(file);
+                    }
+                }
+            });
+        }
+
+        return files;
+    }
+
+    // get module definition
+    public static getModuleDefinition(moduleJsonPath: string): IModuleDefinition {
+        var ctx = this;
+
+        // get module name
+        var moduleName: string = null;
+
+        var moduleNameMatch = ModuleDirectory.moduleJsonPathRegex.exec(moduleJsonPath);
+
+        if (moduleNameMatch) {
+
+            moduleName = moduleNameMatch[0].replace(/\\/g, '/');
+        }
+        else {
+            console.log('WARNING! Module name could not be determined for path: ' + moduleJsonPath);
+        }
+
+        // read module.json contents
+        var moduleJson = fs.readFileSync(moduleJsonPath, { encoding: 'utf8' }).toString();
+
+        var mod: IModuleDefinition = null;
+
+        // deserialize JSON
+        eval('mod = ' + moduleJson);
+
+        // set module name
+        mod.moduleName = moduleName;
+        // set module file path
+        mod.filePath = moduleJsonPath;
+        // set module file directory
+        mod.fileDir = path.dirname(moduleJsonPath);
+
+        return mod;
+    }
+
 
     /*
      * Set order of each module definition.
@@ -417,25 +629,6 @@ export class ModuleDirectory {
             });
         });
     }
-
-    /*
-     * Parse module tree from bottom to top.
-     */
-    public parseModuleTree(moduleDef: IModuleDefinition, moduleFunc: (moduleDef: IModuleDefinition) => void) {
-        var ctx = this;
-
-        // current module
-        moduleFunc(moduleDef);
-
-        // parse dependencies
-        if (moduleDef.parentModules && moduleDef.parentModules.length > 0) {
-            moduleDef.parentModules.forEach(parentModDef => {
-
-                ctx.parseModuleTree(parentModDef, moduleFunc);
-            });
-        }
-    }
-
 
     private createModuleDefinitionsMapOfNames() {
         var ctx = this;
@@ -526,20 +719,7 @@ export class ModuleDirectory {
         });
 
         ctx.moduleDefintionsLeaves = leavesModules;
-    }
-
-    public static getModuleFileRelativePath(filePath: string): string {
-        var ctx = this;
-
-        var match = ModuleDirectory.moduleFilePathRegex.exec(filePath);
-
-        if (match) {
-            return match[1].replace(/\\/g, '/').toLowerCase();
-        }
-        else {
-            return null;
-        }
-    }
+    }    
 
     // get modules
     private getModulesDefinitions(): IModuleDefinition[] {
@@ -558,90 +738,13 @@ export class ModuleDirectory {
 
         return moduleDefLst;
     }
-
-    // get directory files
-    public static getDirectoryFiles(dir: string, regex?: RegExp): string[] {
-        var ctx = this;
-
-        var files = [];
-
-        // get directory files
-        var dirFileNames = fs.readdirSync(dir);
-
-        if (dirFileNames && dirFileNames.length > 0) {
-            dirFileNames.forEach((fileName) => {
-
-                // create file path
-                var file = path.normalize(path.join(dir, fileName));
-
-                // get file stat
-                var stat = fs.statSync(file);
-
-                // if is directory then recursively add files else add the file to the list
-                if (stat.isDirectory()) {
-                    var dirFilesRec = ctx.getDirectoryFiles(file, regex);
-
-                    if (dirFilesRec && dirFilesRec.length) {
-                        files.push.apply(files, dirFilesRec);
-                    }
-                }
-                else {
-                    if (regex) {
-                        if (regex.exec(file)) {
-                            console.log(file);
-                            files.push(file);
-                        }
-                    }
-                    else {
-                        files.push(file);
-                    }
-                }
-            });
-        }
-
-        return files;
-    }
-
-    // get module definition
-    public static getModuleDefinition(moduleJsonPath: string): IModuleDefinition {
-        var ctx = this;
-
-        // get module name
-        var moduleName: string = null;
-
-        var moduleNameMatch = ModuleDirectory.moduleJsonPathRegex.exec(moduleJsonPath);
-
-        if (moduleNameMatch) {
-
-            moduleName = moduleNameMatch[0].replace(/\\/g, '/');
-        }
-        else {
-            console.log('WARNING! Module name could not be determined for path: ' + moduleJsonPath);
-        }
-
-        // read module.json contents
-        var moduleJson = fs.readFileSync(moduleJsonPath, { encoding: 'utf8' }).toString();
-
-        var mod: IModuleDefinition = null;
-
-        // deserialize JSON
-        eval('mod = ' + moduleJson);
-
-        // set module name
-        mod.moduleName = moduleName;
-        // set module file path
-        mod.filePath = moduleJsonPath;
-        // set module file directory
-        mod.fileDir = path.dirname(moduleJsonPath);
-
-        return mod;
-    }
 }
 
 
 export interface IModuleBundleMapExport {
 
-    physicalFilePaths: string[]
+    modules: string[];
+    physicalFilePaths: string[];
     relativeFilePaths: string[];
     physicalOutPath: string;
     relativeOutPath: string;
@@ -655,6 +758,7 @@ export interface IModuleBundleMap {
     patternGroups: string[];
     files: IModuleBundleMapFile[];
     out: string;
+    outRelative: string;
 }
 
 
@@ -663,7 +767,7 @@ export interface IModuleBundleMapFile {
     parentModule: IModuleDefinition;
     bundleFile: IModuleBundleFile;
     path: string;
-    relativePath: string;
+    pathRelative: string;
     isLocal: boolean;
     order?: number;
 }
@@ -696,6 +800,14 @@ export interface IModuleDefinitionScript {
 
     moduleDefinition: IModuleDefinition;
     order: number;
+}
+
+
+export interface IModuleDefinitionExport {
+
+    moduleName: string;
+    dependencies: string[];
+    scripts: string[];
 }
 
 
