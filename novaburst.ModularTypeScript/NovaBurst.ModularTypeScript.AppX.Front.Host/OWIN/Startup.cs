@@ -23,7 +23,7 @@ namespace NovaBurst.ModularTypeScript.AppX.Front.Host
             HostConfig config = HostConfig.GetDefault();
 
             // bundle and minify all modules
-            ModuleBundling.BundleAll(config.RootDirectory);
+            //ModuleBundling.BundleAll(config.RootDirectory);
 
 
             ConfigureFileServer(app, config);

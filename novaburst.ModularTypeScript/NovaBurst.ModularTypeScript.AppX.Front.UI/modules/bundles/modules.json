@@ -1,0 +1,65 @@
+[
+    {
+        "moduleName": "modules/AppX.Core/module.json",
+        "dependencies": [
+            "modules/Core/module.json"
+        ],
+        "scripts": [
+            "models/Address",
+            "models/Phone",
+            "models/Person",
+            "models/PersonAddress",
+            "models/PersonPhone",
+            "models/PersonPhoneType"
+        ]
+    },
+    {
+        "moduleName": "modules/AppX.Front/module.json",
+        "dependencies": [
+            "scripts/bootstrap",
+            "scripts/angular",
+            "scripts/angular-route",
+            "modules/AppX.Sales/module.json"
+        ],
+        "scripts": [
+            "module.angular",
+            "controllers/FrontController",
+            "module.angular.bootstrap"
+        ]
+    },
+    {
+        "moduleName": "modules/AppX.Sales/module.json",
+        "dependencies": [
+            "modules/AppX.Core/module.json",
+            "scripts/angular"
+        ],
+        "scripts": [
+            "module.angular",
+            "models/Customer",
+            "models/Product",
+            "interfaces/ICustomerService",
+            "interfaces/IProductService",
+            "services/CustomerService",
+            "services/ProductService",
+            "controllers/SalesControllerBase",
+            "controllers/CustomerController",
+            "controllers/ProductController"
+        ]
+    },
+    {
+        "moduleName": "modules/Core/module.json",
+        "dependencies": [
+            "scripts/angular"
+        ],
+        "scripts": [
+            "module.angular",
+            "List/models/PagingOptions",
+            "List/models/PagedList",
+            "List/models/OrderOptionsField",
+            "List/models/OrderOptions",
+            "List/models/ListOptions",
+            "Model/interfaces/IEntityService",
+            "Model/services/EntityService"
+        ]
+    }
+]

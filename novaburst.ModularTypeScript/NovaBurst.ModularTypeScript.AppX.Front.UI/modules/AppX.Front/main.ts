@@ -3,8 +3,10 @@
 // main entry point
 module NovaBurst.ModularTypeScript.AppX.Front {
 
+    import Core = NovaBurst.ModularTypeScript.Core;
+
     // set debug or release mode - depending on debug query string param
-    window['isDebugMode'] = new RegExp('(\\?|(\\?.*&))debug(|&|=)').exec(document.URL) ? true : false;
+    var isDebug = new RegExp('(\\?|(\\?.*&))debug(|&|=)').exec(document.URL) ? true : false;
 
 
     // RequireJS shim config
@@ -15,7 +17,7 @@ module NovaBurst.ModularTypeScript.AppX.Front {
         };
 
     // configure requireJS differently for debug and release modes
-    if (window['isDebugMode']) {
+    if (isDebug) {
 
         require.config({
             shim: shimConfig,
@@ -40,10 +42,26 @@ module NovaBurst.ModularTypeScript.AppX.Front {
     }
 
 
-    // load startup modules
-    require(['modules/Core/Module/moduleLoader!AppX.Front'],
-        // success
-        function () { },
-        // error
-        function () { });
+    // configure module loader
+    var config = Core.ModuleLoaderConfig.current;
+    config.useBundles = !isDebug;
+    var loadPromise = config.loadFromJson('modules/bundles/modules.json', 'modules/bundles/bundles.json');
+
+    loadPromise.fail(function () {
+        console.error('ModuleLoaderConfig :: Error loading config from JSON.');
+    });
+
+    // after configuration is complete load front module
+    loadPromise.done(function () {
+    
+        // load startup modules
+        require(['modules/Core/Module/ModuleLoader!modules/bundles/appx.front.min'],
+            // success
+            function () {                
+            },
+            // error
+            function () {
+                console.error('Error loading AppX.Front module');
+            });
+    });
 }

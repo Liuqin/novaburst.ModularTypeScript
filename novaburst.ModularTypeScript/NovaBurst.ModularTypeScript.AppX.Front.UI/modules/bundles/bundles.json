@@ -1,0 +1,71 @@
+[
+    {
+        "modules": [
+            "modules/AppX.Core/module.json"
+        ],
+        "relativeFilePaths": [
+            "modules/appx.core/models/address",
+            "modules/appx.core/models/phone",
+            "modules/appx.core/models/person",
+            "modules/appx.core/models/personaddress",
+            "modules/appx.core/models/personphone",
+            "modules/appx.core/models/personphonetype"
+        ],
+        "relativeOutPath": "modules/bundles/appx.core.min"
+    },
+    {
+        "modules": [
+            "modules/AppX.Front/module.json"
+        ],
+        "relativeFilePaths": [
+            "modules/appx.front/controllers/frontcontroller",
+            "modules/appx.front/module.angular.bootstrap"
+        ],
+        "relativeOutPath": "modules/bundles/appx.front.min"
+    },
+    {
+        "modules": [
+            "modules/AppX.Sales/module.json"
+        ],
+        "relativeFilePaths": [
+            "modules/appx.sales/models/customer",
+            "modules/appx.sales/models/product",
+            "modules/appx.sales/interfaces/icustomerservice",
+            "modules/appx.sales/interfaces/iproductservice",
+            "modules/appx.sales/services/customerservice",
+            "modules/appx.sales/services/productservice",
+            "modules/appx.sales/controllers/salescontrollerbase",
+            "modules/appx.sales/controllers/customercontroller",
+            "modules/appx.sales/controllers/productcontroller"
+        ],
+        "relativeOutPath": "modules/bundles/appx.sales.min"
+    },
+    {
+        "modules": [
+            "modules/Core/module.json"
+        ],
+        "relativeFilePaths": [
+            "modules/core/list/models/pagingoptions",
+            "modules/core/list/models/pagedlist",
+            "modules/core/list/models/orderoptionsfield",
+            "modules/core/list/models/orderoptions",
+            "modules/core/list/models/listoptions",
+            "modules/core/model/interfaces/ientityservice",
+            "modules/core/model/services/entityservice"
+        ],
+        "relativeOutPath": "modules/bundles/core.min"
+    },
+    {
+        "modules": [
+            "modules/Core/module.json",
+            "modules/AppX.Sales/module.json",
+            "modules/AppX.Front/module.json"
+        ],
+        "relativeFilePaths": [
+            "modules/core/module.angular",
+            "modules/appx.sales/module.angular",
+            "modules/appx.front/module.angular"
+        ],
+        "relativeOutPath": "modules/bundles/module.angular.min"
+    }
+]
