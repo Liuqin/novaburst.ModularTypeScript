@@ -50,6 +50,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NovaBurst.ModularTypeScript
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NovaBurst.ModularTypeScript.AppX.Core.WebApi", "NovaBurst.ModularTypeScript.AppX.Core.WebApi\NovaBurst.ModularTypeScript.AppX.Core.WebApi.csproj", "{26B32A72-46ED-4AD3-8B71-4AF0D9B80129}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NovaBurst.ModularTypeScript.AppX.Front.Node", "NovaBurst.ModularTypeScript.AppX.Front.Node\NovaBurst.ModularTypeScript.AppX.Front.Node.csproj", "{A2AA6311-50A8-41E9-9258-4FA49891852A}"
+EndProject
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "NovaBurst.ModularTypeScript.Core.NodeJs", "NovaBurst.ModularTypeScript.Core.NodeJs\NovaBurst.ModularTypeScript.Core.NodeJs.njsproj", "{DE6293E6-1580-47EF-A2FC-8FF57AE718DF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -88,6 +92,14 @@ Global
 		{26B32A72-46ED-4AD3-8B71-4AF0D9B80129}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{26B32A72-46ED-4AD3-8B71-4AF0D9B80129}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{26B32A72-46ED-4AD3-8B71-4AF0D9B80129}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2AA6311-50A8-41E9-9258-4FA49891852A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2AA6311-50A8-41E9-9258-4FA49891852A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2AA6311-50A8-41E9-9258-4FA49891852A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2AA6311-50A8-41E9-9258-4FA49891852A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE6293E6-1580-47EF-A2FC-8FF57AE718DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE6293E6-1580-47EF-A2FC-8FF57AE718DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE6293E6-1580-47EF-A2FC-8FF57AE718DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE6293E6-1580-47EF-A2FC-8FF57AE718DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -101,5 +113,7 @@ Global
 		{D0B72D9B-1A61-4D13-B9EA-F0AACEB11CBC} = {EFB64586-8738-4A60-9425-32BD9B5C242C}
 		{CDD1C22D-2D3A-4EAC-ABDA-78551C166E3C} = {2F7CC940-E814-4C38-BCED-F084DA0124F2}
 		{26B32A72-46ED-4AD3-8B71-4AF0D9B80129} = {74EEDC49-5AF6-4489-AF26-B8D4C516424A}
+		{A2AA6311-50A8-41E9-9258-4FA49891852A} = {BB79A639-E6AF-4F85-885C-57F952C203D8}
+		{DE6293E6-1580-47EF-A2FC-8FF57AE718DF} = {EFB64586-8738-4A60-9425-32BD9B5C242C}
 	EndGlobalSection
 EndGlobal

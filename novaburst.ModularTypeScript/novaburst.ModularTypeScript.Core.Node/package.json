@@ -1,0 +1,11 @@
+﻿{
+    "name": "novaburst.ModularTypeScript.Core.Node",
+    "author": "Andrei Macarie",
+    "version": "0.1.0",
+    "description": "Core library",     
+    "keywords": [ "Core" ],
+    "bugs": { "url": "bugsUrl", "email": "bugsEmail@mail.mail" },
+
+    "main": "ref.js",
+    "files": ["modules"]
+}
