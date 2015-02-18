@@ -1,0 +1,11 @@
+﻿{
+    "dependencies": [ ],
+
+    "scripts": [
+        "scripts/jquery"
+    ],
+
+    "physicalPaths": {
+        "scripts": [ "../../../Scripts" ]
+    }
+}

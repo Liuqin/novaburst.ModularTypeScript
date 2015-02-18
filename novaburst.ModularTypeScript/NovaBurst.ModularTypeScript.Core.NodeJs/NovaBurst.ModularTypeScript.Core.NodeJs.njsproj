@@ -44,6 +44,7 @@
   <ItemGroup>
     <Folder Include="modules\" />
     <Folder Include="modules\ModuleUtils\" />
+    <Folder Include="out\" />
     <Folder Include="Scripts\" />
     <Folder Include="Scripts\typings\" />
     <Folder Include="Scripts\typings\gruntjs\" />

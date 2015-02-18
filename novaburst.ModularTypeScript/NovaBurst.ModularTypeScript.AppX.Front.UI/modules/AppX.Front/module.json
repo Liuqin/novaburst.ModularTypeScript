@@ -1,5 +1,5 @@
 ﻿{
-    "dependencies": [ "scripts/bootstrap", "scripts/angular", "scripts/angular-route", "modules/AppX.Sales/module.json" ],
+    "dependencies": [ "scripts/bootstrap", "modules/_Libs/lib.angular/module.json", "modules/AppX.Sales/module.json" ],
 
     "scripts": [
         "module.angular",

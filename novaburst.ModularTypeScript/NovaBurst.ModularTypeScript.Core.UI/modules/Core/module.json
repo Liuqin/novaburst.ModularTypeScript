@@ -1,5 +1,5 @@
 ﻿{
-    "dependencies": [ "scripts/angular" ],
+    "dependencies": [ "modules/_Libs/lib.angular/module.json" ],
 
     "scripts": [
         "module.angular",

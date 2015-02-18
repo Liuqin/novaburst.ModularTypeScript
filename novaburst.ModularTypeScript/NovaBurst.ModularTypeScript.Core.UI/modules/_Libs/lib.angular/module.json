@@ -1,0 +1,12 @@
+﻿{
+    "dependencies": [ "modules/_Libs/lib.jquery/module.json" ],
+
+    "scripts": [
+        "scripts/angular",
+        "scripts/angular-route"
+    ],
+
+    "physicalPaths": {
+        "scripts": [ "../../../Scripts" ]
+    }
+}

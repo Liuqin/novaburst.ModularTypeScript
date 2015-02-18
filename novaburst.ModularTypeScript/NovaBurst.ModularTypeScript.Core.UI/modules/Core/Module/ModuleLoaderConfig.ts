@@ -186,5 +186,7 @@
         modules: string[];
         relativeFilePaths: string[];
         relativeOutPath: string;
+        dependencies?: string[];
+        ignoreModuleDependencies?: boolean;
     }
 }

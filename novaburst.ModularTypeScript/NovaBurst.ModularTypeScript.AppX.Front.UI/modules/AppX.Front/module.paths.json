@@ -1,0 +1,5 @@
+﻿{    
+    "paths": {
+        "scripts/jquery": ["scripts/jquery-2.1.1"]
+    }
+}

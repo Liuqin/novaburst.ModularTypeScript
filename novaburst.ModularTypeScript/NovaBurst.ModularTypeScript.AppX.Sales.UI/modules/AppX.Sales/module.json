@@ -1,5 +1,5 @@
 ﻿{
-    "dependencies": [ "modules/AppX.Core/module.json", "scripts/angular" ],
+    "dependencies": [ "modules/AppX.Core/module.json", "modules/_Libs/lib.angular/module.json" ],
 
     "scripts": [
         "module.angular",

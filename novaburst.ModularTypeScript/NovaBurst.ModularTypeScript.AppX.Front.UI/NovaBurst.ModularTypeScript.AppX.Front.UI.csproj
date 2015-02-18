@@ -61,6 +61,7 @@
   <ItemGroup>
     <Content Include="modules\AppX.Front\module.json" />
     <Content Include="modules\AppX.Front\_module.bat" />
+    <Content Include="modules\AppX.Front\module.paths.json" />
     <Content Include="modules\bundles\bundles.json" />
     <Content Include="modules\bundles\modules.json" />
     <None Include="Web.Debug.config">
@@ -75,6 +76,8 @@
     <Content Include="modules\bundles\AppX.Front.min.js" />
     <Content Include="modules\bundles\AppX.Sales.min.js" />
     <Content Include="modules\bundles\Core.min.js" />
+    <Content Include="modules\bundles\lib.angular.min.js" />
+    <Content Include="modules\bundles\lib.jquery.min.js" />
     <Content Include="modules\bundles\module.angular.min.js" />
     <Content Include="Views\Index.html" />
     <Content Include="Web.config" />
