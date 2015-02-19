@@ -531,7 +531,7 @@ export class ModuleDirectory {
         ctx.assignModuleDependencies();
 
         // determine modules leaves
-        ctx.determineModuleLeaves();
+        //ctx.determineModuleLeaves();
 
         // foreach module definition set the associated order as seen in the module definition tree (formed by dependencies)
         ctx.setModuleTreeOrder();
@@ -568,12 +568,23 @@ export class ModuleDirectory {
         if (ctx.moduleDefinitions && ctx.moduleDefinitions.length > 0) {
             ctx.moduleDefinitions.forEach(modDef => {
 
+                // create the list of scripts
+                var appRelativeScripts: string[] = [];
+
+                var modAppPath = path.dirname(modDef.moduleName);
+
+                if (modDef.scripts && modDef.scripts.length > 0) {
+                    modDef.scripts.forEach(script => {
+                        appRelativeScripts.push(path.join(modAppPath, script));
+                    });
+                }
+
                 // create export
                 var modDefExport: IModuleDefinitionExport =
                     {
                         moduleName: modDef.moduleName,
                         dependencies: modDef.dependencies,
-                        scripts: modDef.scripts
+                        scripts: appRelativeScripts
                     };
 
                 modDefExportLst.push(modDefExport);
@@ -611,19 +622,39 @@ export class ModuleDirectory {
     /*
      * Parse module tree from bottom to top.
      */
-    public parseModuleTree(moduleDef: IModuleDefinition, moduleFunc: (moduleDef: IModuleDefinition) => void) {
+    public parseModuleTree(moduleDef: IModuleDefinition, moduleFunc: (moduleDef: IModuleDefinition) => void, fromModDef?: IModuleDefinition, parseMap?: any) {
         var ctx = this;
+
+        if (!parseMap) {
+            parseMap = {};
+        }
+
+        // determine cycles
+        var parseKey = (fromModDef ? fromModDef.moduleName.toLowerCase() : '...') + ' - ' + moduleDef.moduleName.toLowerCase();
+        var parseKeyInverse = moduleDef.moduleName.toLowerCase() + ' - ' + (fromModDef ? fromModDef.moduleName.toLowerCase() : '...');
+
+        if (parseMap[parseKeyInverse]) {
+            throw ('Cycle found for path \'' + parseKey + '\' while parsing the modules tree.');
+        }
+
+        parseMap[parseKey] = true;
+
+
+        // parse dependencies
+        if (moduleDef.dependencies && moduleDef.dependencies.length > 0) {
+            moduleDef.dependencies.forEach(dep => {
+
+                // get dependency module
+                var depModDef = ctx.getModuleDefinitionByModuleName(dep);
+
+                if (depModDef) {
+                    ctx.parseModuleTree(depModDef, moduleFunc, moduleDef, parseMap);
+                }
+            });
+        }
 
         // current module
         moduleFunc(moduleDef);
-
-        // parse dependencies
-        if (moduleDef.parentModules && moduleDef.parentModules.length > 0) {
-            moduleDef.parentModules.forEach(parentModDef => {
-
-                ctx.parseModuleTree(parentModDef, moduleFunc);
-            });
-        }
     }
 
 
@@ -735,6 +766,7 @@ export class ModuleDirectory {
 
                     scriptPath = scriptPath.slice(subpath.length);
                     scriptPath = ctx.modulePaths.paths[subpath] + scriptPath;
+                    scriptPath = scriptPath.toLowerCase();
                     break;
                 }
             }
@@ -749,6 +781,7 @@ export class ModuleDirectory {
 
                     scriptPath = scriptPath.slice(subpath.length);
                     scriptPath = modDef.physicalPaths[subpath] + scriptPath;
+                    scriptPath = scriptPath.toLowerCase();
                     break;
                 }
             }
@@ -791,8 +824,16 @@ export class ModuleDirectory {
         var currentOrder = 1;
 
 
+        // get root modules
+        var rootModules = ctx.getRootModules();
+
+        if (!rootModules || rootModules.length == 0) {
+            throw 'No root modules. Check module dependencies and ensure that no cycles are found.';
+        }
+
+
         // foreach module definition set the associated order
-        ctx.moduleDefintionsLeaves.forEach(modDef => {
+        rootModules.forEach(modDef => {
 
             if (modDef.order) {
                 return;
@@ -807,6 +848,19 @@ export class ModuleDirectory {
                 currentOrder++;
             });
         });
+
+
+        // display order of modules
+        var map = {};
+        ctx.moduleDefinitions.forEach(modDef => {
+            map[modDef.order] = modDef;
+        });
+
+        console.log('\nModules order:');
+        for (var order in map) {
+            var modDef: IModuleDefinition = map[order];
+            console.log(order + '. ' + modDef.moduleName);
+        }
     }
 
     private createModuleDefinitionsMapOfNames() {
@@ -881,9 +935,18 @@ export class ModuleDirectory {
                 });
             }
         }
+
+
+        // display order of files
+        console.log('\nModules files order:');
+        var filePathIndex = 1;
+        for (var filePath in ctx.moduleDefinitionsFilesOrder) {
+            console.log(filePathIndex + '. ' + filePath);
+            filePathIndex++;
+        }
     }
 
-    private determineModuleLeaves() {
+    private getLevesModules() {
         var ctx = this;
 
         // select leaves
@@ -897,8 +960,41 @@ export class ModuleDirectory {
             }
         });
 
-        ctx.moduleDefintionsLeaves = leavesModules;
-    }    
+        return leavesModules;
+    }
+
+    private getRootModules(): IModuleDefinition[] {
+        var ctx = this;
+
+        var roots: IModuleDefinition[] = [];
+
+        if (!ctx.moduleDefinitions || ctx.moduleDefinitions.length == 0) {
+            return roots;
+        }
+
+        // map of all dependencies
+        var dependencies: any = {};
+
+        // create the map of all dependencies
+        ctx.moduleDefinitions.forEach(modDef => {
+
+            if (modDef.dependencies && modDef.dependencies.length > 0) {
+                modDef.dependencies.forEach(dep => {
+                    dependencies[dep.toLowerCase()] = true;
+                });
+            }
+        });
+
+        // determine root modules
+        ctx.moduleDefinitions.forEach(modDef => {
+
+            if (!dependencies[modDef.moduleName.toLowerCase()]) {
+                roots.push(modDef);
+            }
+        });
+
+        return roots;
+    }
 
     // get modules
     private getModulesDefinitions(): IModuleDefinition[] {

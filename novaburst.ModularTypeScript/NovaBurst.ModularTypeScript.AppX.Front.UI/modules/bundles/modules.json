@@ -5,12 +5,12 @@
             "modules/Core/module.json"
         ],
         "scripts": [
-            "models/address",
-            "models/phone",
-            "models/person",
-            "models/personaddress",
-            "models/personphone",
-            "models/personphonetype"
+            "modules\\AppX.Core\\models\\address",
+            "modules\\AppX.Core\\models\\phone",
+            "modules\\AppX.Core\\models\\person",
+            "modules\\AppX.Core\\models\\personaddress",
+            "modules\\AppX.Core\\models\\personphone",
+            "modules\\AppX.Core\\models\\personphonetype"
         ]
     },
     {
@@ -21,9 +21,9 @@
             "modules/AppX.Sales/module.json"
         ],
         "scripts": [
-            "module.angular",
-            "controllers/frontcontroller",
-            "module.angular.bootstrap"
+            "modules\\AppX.Front\\module.angular",
+            "modules\\AppX.Front\\controllers\\frontcontroller",
+            "modules\\AppX.Front\\module.angular.bootstrap"
         ]
     },
     {
@@ -33,16 +33,16 @@
             "modules/_Libs/lib.angular/module.json"
         ],
         "scripts": [
-            "module.angular",
-            "models/customer",
-            "models/product",
-            "interfaces/icustomerservice",
-            "interfaces/iproductservice",
-            "services/customerservice",
-            "services/productservice",
-            "controllers/salescontrollerbase",
-            "controllers/customercontroller",
-            "controllers/productcontroller"
+            "modules\\AppX.Sales\\module.angular",
+            "modules\\AppX.Sales\\models\\customer",
+            "modules\\AppX.Sales\\models\\product",
+            "modules\\AppX.Sales\\interfaces\\icustomerservice",
+            "modules\\AppX.Sales\\interfaces\\iproductservice",
+            "modules\\AppX.Sales\\services\\customerservice",
+            "modules\\AppX.Sales\\services\\productservice",
+            "modules\\AppX.Sales\\controllers\\salescontrollerbase",
+            "modules\\AppX.Sales\\controllers\\customercontroller",
+            "modules\\AppX.Sales\\controllers\\productcontroller"
         ]
     },
     {
@@ -51,14 +51,14 @@
             "modules/_Libs/lib.angular/module.json"
         ],
         "scripts": [
-            "module.angular",
-            "list/models/pagingoptions",
-            "list/models/pagedlist",
-            "list/models/orderoptionsfield",
-            "list/models/orderoptions",
-            "list/models/listoptions",
-            "model/interfaces/ientityservice",
-            "model/services/entityservice"
+            "modules\\Core\\module.angular",
+            "modules\\Core\\list\\models\\pagingoptions",
+            "modules\\Core\\list\\models\\pagedlist",
+            "modules\\Core\\list\\models\\orderoptionsfield",
+            "modules\\Core\\list\\models\\orderoptions",
+            "modules\\Core\\list\\models\\listoptions",
+            "modules\\Core\\model\\interfaces\\ientityservice",
+            "modules\\Core\\model\\services\\entityservice"
         ]
     },
     {
@@ -67,15 +67,15 @@
             "modules/_Libs/lib.jquery/module.json"
         ],
         "scripts": [
-            "../../../Scripts/angular",
-            "../../../Scripts/angular-route"
+            "scripts\\angular",
+            "scripts\\angular-route"
         ]
     },
     {
         "moduleName": "modules/_Libs/lib.jquery/module.json",
         "dependencies": [],
         "scripts": [
-            "../../../Scripts/jquery-2.1.1"
+            "scripts\\jquery-2.1.1"
         ]
     }
 ]

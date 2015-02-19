@@ -17,7 +17,7 @@ var bundling = new moduleUtils.ModuleBundling(
                 [
                     { pattern: 'module.angular.js$' }
                 ],
-                out: 'NovaBurst.ModularTypeScript.AppX.Front.UI\\modules\\bundles\\module.angular.min.js',
+                out: 'NovaBurst.ModularTypeScript.Core.NodeJs\\out\\module.angular.min.js',
                 dependencies: ['modules/_Libs/lib.angular/module.json'],
                 ignoreModuleDependencies: true
             },
@@ -26,20 +26,33 @@ var bundling = new moduleUtils.ModuleBundling(
             {
                 files:
                 [
-                    { pattern: '([^\\\\]+)\\\\module.json$', moduleFilesPattern: 'module.angular.js$', moduleFilesPatternReverse: true }
+                    { pattern: '(Core)\\\\module.json$', moduleFilesPattern: 'module.angular.js$', moduleFilesPatternReverse: true },
+                    { pattern: '(AppX.Core)\\\\module.json$', moduleFilesPattern: 'module.angular.js$', moduleFilesPatternReverse: true },
+                    { pattern: '(AppX.Sales)\\\\module.json$', moduleFilesPattern: 'module.angular.js$', moduleFilesPatternReverse: true },
+                    { pattern: '(AppX.Front)\\\\module.json$', moduleFilesPattern: 'module.angular.js$', moduleFilesPatternReverse: true }
                 ],
-                out: 'NovaBurst.ModularTypeScript.AppX.Front.UI\\modules\\bundles\\{{0}}.min.js',
+                out: 'NovaBurst.ModularTypeScript.Core.NodeJs\\out\\{{0}}.min.js',
                 dependencies: ['modules/bundles/module.angular.min']
+            },
+
+            // group scripts per module
+            {
+                files:
+                [
+                    { pattern: '(lib[^\\\\]+)\\\\module.json$', moduleFilesPattern: 'module.angular.js$', moduleFilesPatternReverse: true }
+                ],
+                out: 'NovaBurst.ModularTypeScript.Core.NodeJs\\out\\{{0}}.min.js',
+                dependencies: []
             }
         ]
     });
 
 
-//// write module definitions JSON
-//bundling.moduleDirectory.writeModuleDefinitionsJson('out\\modules.json');
+// write module definitions JSON
+bundling.moduleDirectory.writeModuleDefinitionsJson('out\\modules.json');
 
-//// write bundling definitions JSON
-//bundling.writeBundleMapsJson('out\\bundles.json', false);
+// write bundling definitions JSON
+bundling.writeBundleMapsJson('out\\bundles.json', false);
 
 
 var config = bundling.createGruntUglifyFilesConfig(__dirname)

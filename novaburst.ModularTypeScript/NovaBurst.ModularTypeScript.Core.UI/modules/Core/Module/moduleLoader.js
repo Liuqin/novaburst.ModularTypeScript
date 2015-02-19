@@ -190,6 +190,7 @@ define(["require", "exports", "scripts/jquery"], function (require, exports) {
                     if (mod && mod.moduleDefinition.dependencies && mod.moduleDefinition.dependencies.length > 0) {
                         // load each dependency
                         mod.moduleDefinition.dependencies.forEach(function (depName) {
+                            //console.log(bundleMapInfo.moduleBundleMap.relativeOutPath + ' --- ' + mod.moduleDefinition.moduleName + ' --- ' + depName);
                             dependencies.push(depName);
                         });
                     }
@@ -201,13 +202,20 @@ define(["require", "exports", "scripts/jquery"], function (require, exports) {
             }
             // process dependencies
             if (dependencies.length > 0) {
+                var depsNames = '';
                 dependencies.forEach(function (depName) {
+                    depsNames += ', ' + depName;
                     // load dependency
                     var processModPromise = ctx.processModule(depName, processScriptFunc, processedMap);
+                    processModPromise.always(function () {
+                        console.log('DEP LOADED >> ' + depName);
+                    });
                     processModulePromises.push(processModPromise);
                 });
+                console.log('DEPS WAIT - ' + bundleMapInfo.moduleBundleMap.relativeOutPath + ' >>> ' + depsNames);
             }
             else {
+                console.log('NO DEPS.');
                 processModulePromises.push($.when(null));
             }
             $.when.apply($, processModulePromises).done(function () {
@@ -297,21 +305,31 @@ define(["require", "exports", "scripts/jquery"], function (require, exports) {
             var def = $.Deferred();
             if (scripts && scripts.length > 0) {
                 var promises = [];
-                // load each script
-                scripts.forEach(function (script) {
-                    var processedMapKey = 'script :: ' + script.toLowerCase();
-                    var processScriptPromise = processedMap[processedMapKey];
-                    if (!processScriptPromise) {
-                        processScriptPromise = processScriptFunc(script);
-                        processedMap[processedMapKey] = processScriptPromise;
+                // clone scripts
+                var scriptsToProcess = scripts.slice(0);
+                // process next script in sequence
+                function processNextScript() {
+                    if (scriptsToProcess.length > 0) {
+                        // remove and get first element from array
+                        var script = scriptsToProcess.shift();
+                        // determine if current script is already in process
+                        var processedMapKey = 'script :: ' + script.toLowerCase();
+                        var processScriptPromise = processedMap[processedMapKey];
+                        if (!processScriptPromise) {
+                            processScriptPromise = processScriptFunc(script);
+                            processedMap[processedMapKey] = processScriptPromise;
+                        }
+                        // wait for script to load before processing the next
+                        processScriptPromise.always(function () {
+                            processNextScript();
+                        });
                     }
-                    promises.push(processScriptPromise);
-                });
-                $.when.apply($, promises).done(function () {
-                    def.resolve();
-                }).fail(function () {
-                    def.reject();
-                });
+                    else {
+                        def.resolve();
+                    }
+                }
+                // process next script
+                processNextScript();
             }
             else {
                 def.resolve();

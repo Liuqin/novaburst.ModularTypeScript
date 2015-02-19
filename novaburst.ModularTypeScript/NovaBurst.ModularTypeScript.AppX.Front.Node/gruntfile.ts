@@ -31,11 +31,11 @@ var gruntFunc = (grunt: IGrunt) => {
                 // group scripts per module
                 {
                     files:
-                    [
-                        { pattern: '(AppX.Front)\\\\module.json$', moduleFilesPattern: 'module.angular.js$', moduleFilesPatternReverse: true },
-                        { pattern: '(AppX.Sales)\\\\module.json$', moduleFilesPattern: 'module.angular.js$', moduleFilesPatternReverse: true },
-                        { pattern: '(AppX.Core)\\\\module.json$', moduleFilesPattern: 'module.angular.js$', moduleFilesPatternReverse: true },
-                        { pattern: '(Core)\\\\module.json$', moduleFilesPattern: 'module.angular.js$', moduleFilesPatternReverse: true }
+                    [                        
+                        { pattern: '\\\\(Core)\\\\module.json$', moduleFilesPattern: 'module.angular.js$', moduleFilesPatternReverse: true },
+                        { pattern: '\\\\(AppX.Core)\\\\module.json$', moduleFilesPattern: 'module.angular.js$', moduleFilesPatternReverse: true },
+                        { pattern: '\\\\(AppX.Sales)\\\\module.json$', moduleFilesPattern: 'module.angular.js$', moduleFilesPatternReverse: true },
+                        { pattern: '\\\\(AppX.Front)\\\\module.json$', moduleFilesPattern: 'module.angular.js$', moduleFilesPatternReverse: true }
                     ],
                     out: 'NovaBurst.ModularTypeScript.AppX.Front.UI\\modules\\bundles\\{{0}}.min.js',
                     dependencies: ['modules/bundles/module.angular.min']
@@ -66,7 +66,7 @@ var gruntFunc = (grunt: IGrunt) => {
         {
             options:
             {
-                sourceMap: false,
+                sourceMap: true,
                 banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' + '<%= grunt.template.today("yyyy-mm-dd HH:mm:ss") %> */\n'
             },
             build:

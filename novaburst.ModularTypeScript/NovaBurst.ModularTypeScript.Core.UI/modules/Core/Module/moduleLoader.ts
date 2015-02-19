@@ -100,6 +100,7 @@ export class Loader {
 
 
     private processModule(modName: string, processScriptFunc: (script: string) => JQueryPromise<any>, processedMap: any): JQueryPromise<any> {
+
         var ctx = this;
 
         var def = $.Deferred();
@@ -264,6 +265,8 @@ export class Loader {
                     // load each dependency
                     mod.moduleDefinition.dependencies.forEach(depName => {
 
+                        //console.log(bundleMapInfo.moduleBundleMap.relativeOutPath + ' --- ' + mod.moduleDefinition.moduleName + ' --- ' + depName);
+
                         dependencies.push(depName);
                     });
                 }
@@ -277,17 +280,31 @@ export class Loader {
         }
 
 
+        
+
         // process dependencies
         if (dependencies.length > 0) {
+
+            var depsNames = '';
+
             dependencies.forEach(depName => {
+
+                depsNames += ', ' + depName;
 
                 // load dependency
                 var processModPromise = ctx.processModule(depName, processScriptFunc, processedMap);
 
+                processModPromise.always(function () {
+                    console.log('DEP LOADED >> ' + depName);
+                });
+
                 processModulePromises.push(processModPromise);
             });
+
+            console.log('DEPS WAIT - ' + bundleMapInfo.moduleBundleMap.relativeOutPath + ' >>> ' + depsNames);
         }
         else {
+            console.log('NO DEPS.');
             processModulePromises.push($.when(null));
         }
 
@@ -414,27 +431,38 @@ export class Loader {
 
             var promises = [];
 
-            // load each script
-            scripts.forEach(script => {
+            // clone scripts
+            var scriptsToProcess = scripts.slice(0);
 
-                var processedMapKey = 'script :: ' + script.toLowerCase();
-                var processScriptPromise = processedMap[processedMapKey];
+            // process next script in sequence
+            function processNextScript() {
+                if (scriptsToProcess.length > 0) {
 
-                if (!processScriptPromise) {
-                    processScriptPromise = processScriptFunc(script);
-                    processedMap[processedMapKey] = processScriptPromise;
+                    // remove and get first element from array
+                    var script = scriptsToProcess.shift();
+
+                    // determine if current script is already in process
+                    var processedMapKey = 'script :: ' + script.toLowerCase();
+                    var processScriptPromise: JQueryPromise<any> = processedMap[processedMapKey];
+
+                    if (!processScriptPromise) {
+
+                        processScriptPromise = processScriptFunc(script);
+                        processedMap[processedMapKey] = processScriptPromise;
+                    }
+
+                    // wait for script to load before processing the next
+                    processScriptPromise.always(function () {
+                        processNextScript();
+                    });
                 }
+                else {
+                    def.resolve();
+                }
+            }
 
-                promises.push(processScriptPromise);
-            });
-
-            $.when.apply($, promises)
-                .done(function () {
-                def.resolve();
-            })
-                .fail(function () {
-                def.reject();
-            });
+            // process next script
+            processNextScript();
         }
         else {
             def.resolve();

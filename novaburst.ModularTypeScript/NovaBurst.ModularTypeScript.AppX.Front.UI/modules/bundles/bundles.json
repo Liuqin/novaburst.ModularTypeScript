@@ -1,14 +1,14 @@
 [
     {
         "modules": [
-            "modules/AppX.Front/module.json",
+            "modules/Core/module.json",
             "modules/AppX.Sales/module.json",
-            "modules/Core/module.json"
+            "modules/AppX.Front/module.json"
         ],
         "relativeFilePaths": [
-            "modules/appx.front/module.angular",
+            "modules/core/module.angular",
             "modules/appx.sales/module.angular",
-            "modules/core/module.angular"
+            "modules/appx.front/module.angular"
         ],
         "relativeOutPath": "modules/bundles/module.angular.min",
         "dependencies": [
@@ -18,13 +18,35 @@
     },
     {
         "modules": [
-            "modules/AppX.Front/module.json"
+            "modules/Core/module.json"
         ],
         "relativeFilePaths": [
-            "modules/appx.front/controllers/frontcontroller",
-            "modules/appx.front/module.angular.bootstrap"
+            "modules/core/list/models/pagingoptions",
+            "modules/core/list/models/pagedlist",
+            "modules/core/list/models/orderoptionsfield",
+            "modules/core/list/models/orderoptions",
+            "modules/core/list/models/listoptions",
+            "modules/core/model/interfaces/ientityservice",
+            "modules/core/model/services/entityservice"
         ],
-        "relativeOutPath": "modules/bundles/appx.front.min",
+        "relativeOutPath": "modules/bundles/core.min",
+        "dependencies": [
+            "modules/bundles/module.angular.min"
+        ]
+    },
+    {
+        "modules": [
+            "modules/AppX.Core/module.json"
+        ],
+        "relativeFilePaths": [
+            "modules/appx.core/models/address",
+            "modules/appx.core/models/phone",
+            "modules/appx.core/models/person",
+            "modules/appx.core/models/personaddress",
+            "modules/appx.core/models/personphone",
+            "modules/appx.core/models/personphonetype"
+        ],
+        "relativeOutPath": "modules/bundles/appx.core.min",
         "dependencies": [
             "modules/bundles/module.angular.min"
         ]
@@ -51,42 +73,13 @@
     },
     {
         "modules": [
-            "modules/AppX.Core/module.json"
+            "modules/AppX.Front/module.json"
         ],
         "relativeFilePaths": [
-            "modules/appx.core/models/address",
-            "modules/appx.core/models/phone",
-            "modules/appx.core/models/person",
-            "modules/appx.core/models/personaddress",
-            "modules/appx.core/models/personphone",
-            "modules/appx.core/models/personphonetype"
+            "modules/appx.front/controllers/frontcontroller",
+            "modules/appx.front/module.angular.bootstrap"
         ],
-        "relativeOutPath": "modules/bundles/appx.core.min",
-        "dependencies": [
-            "modules/bundles/module.angular.min"
-        ]
-    },
-    {
-        "modules": [
-            "modules/Core/module.json",
-            "modules/AppX.Core/module.json"
-        ],
-        "relativeFilePaths": [
-            "modules/core/list/models/pagingoptions",
-            "modules/core/list/models/pagedlist",
-            "modules/core/list/models/orderoptionsfield",
-            "modules/core/list/models/orderoptions",
-            "modules/core/list/models/listoptions",
-            "modules/core/model/interfaces/ientityservice",
-            "modules/core/model/services/entityservice",
-            "modules/appx.core/models/address",
-            "modules/appx.core/models/phone",
-            "modules/appx.core/models/person",
-            "modules/appx.core/models/personaddress",
-            "modules/appx.core/models/personphone",
-            "modules/appx.core/models/personphonetype"
-        ],
-        "relativeOutPath": "modules/bundles/core.min",
+        "relativeOutPath": "modules/bundles/appx.front.min",
         "dependencies": [
             "modules/bundles/module.angular.min"
         ]

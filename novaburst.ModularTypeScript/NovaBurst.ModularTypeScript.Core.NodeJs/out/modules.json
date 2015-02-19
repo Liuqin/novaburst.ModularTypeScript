@@ -5,12 +5,12 @@
             "modules/Core/module.json"
         ],
         "scripts": [
-            "models/Address",
-            "models/Phone",
-            "models/Person",
-            "models/PersonAddress",
-            "models/PersonPhone",
-            "models/PersonPhoneType"
+            "models/address",
+            "models/phone",
+            "models/person",
+            "models/personaddress",
+            "models/personphone",
+            "models/personphonetype"
         ]
     },
     {
@@ -22,7 +22,7 @@
         ],
         "scripts": [
             "module.angular",
-            "controllers/FrontController",
+            "controllers/frontcontroller",
             "module.angular.bootstrap"
         ]
     },
@@ -34,15 +34,15 @@
         ],
         "scripts": [
             "module.angular",
-            "models/Customer",
-            "models/Product",
-            "interfaces/ICustomerService",
-            "interfaces/IProductService",
-            "services/CustomerService",
-            "services/ProductService",
-            "controllers/SalesControllerBase",
-            "controllers/CustomerController",
-            "controllers/ProductController"
+            "models/customer",
+            "models/product",
+            "interfaces/icustomerservice",
+            "interfaces/iproductservice",
+            "services/customerservice",
+            "services/productservice",
+            "controllers/salescontrollerbase",
+            "controllers/customercontroller",
+            "controllers/productcontroller"
         ]
     },
     {
@@ -52,13 +52,13 @@
         ],
         "scripts": [
             "module.angular",
-            "List/models/PagingOptions",
-            "List/models/PagedList",
-            "List/models/OrderOptionsField",
-            "List/models/OrderOptions",
-            "List/models/ListOptions",
-            "Model/interfaces/IEntityService",
-            "Model/services/EntityService"
+            "list/models/pagingoptions",
+            "list/models/pagedlist",
+            "list/models/orderoptionsfield",
+            "list/models/orderoptions",
+            "list/models/listoptions",
+            "model/interfaces/ientityservice",
+            "model/services/entityservice"
         ]
     },
     {
@@ -67,15 +67,15 @@
             "modules/_Libs/lib.jquery/module.json"
         ],
         "scripts": [
-            "scripts/angular",
-            "scripts/angular-route"
+            "../../../scripts/angular",
+            "../../../scripts/angular-route"
         ]
     },
     {
         "moduleName": "modules/_Libs/lib.jquery/module.json",
         "dependencies": [],
         "scripts": [
-            "scripts/jquery"
+            "../../../scripts/jquery-2.1.1"
         ]
     }
 ]
